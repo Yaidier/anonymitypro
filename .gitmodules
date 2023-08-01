@@ -1,0 +1,3 @@
+[submodule "web/app/themes/savvy"]
+	path = web/app/themes/savvy
+	url = git@github.com:wirenomads/savvy-theme.git

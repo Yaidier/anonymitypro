@@ -1,0 +1,47 @@
+# Application
+web/app/plugins/*
+!web/app/plugins/.gitkeep
+web/app/mu-plugins/*/
+web/app/themes/twentytwentytwo/
+web/app/upgrade
+web/app/uploads/*
+!web/app/uploads/.gitkeep
+web/app/cache/*
+
+# WordPress
+web/wp
+
+# Premium Plugins
+!web/app/plugins/advanced-custom-fields-pro/
+!web/app/plugins/polylang-pro/
+!web/app/plugins/thirstyaffiliates-pro/
+!web/app/plugins/wordpress-seo-premium/
+
+# Ssh Keys
+.ssh
+
+# Logs
+*.log
+
+# Dotenv
+.env
+.env.*
+!.env.example
+
+# Composer
+/vendor
+
+# WP-CLI
+wp-cli.local.yml
+
+# Other Files and Driectories
+.DS_Store
+.vscode
+ps-sta-bedrock.sql
+web/app/db.php
+web/app/updraft/
+*.sql
+
+# Cache
+web/app/cache/data
+!web/app/cache/.gitkeep

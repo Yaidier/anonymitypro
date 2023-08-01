@@ -1,0 +1,29 @@
+<section class="vv-vpnoverview bg-primary-600 py-10 px-3">
+    <div class="container bg-primary-800 flex p-12 gap-7 rounded-xl md:flex-col md:px-10 md:gap-0">
+        <div class="w-2/4 flex flex-col justify-start  md:w-full">
+            <h3 class="text-size_32 font-semibold text-secondary-800">About <span class=" text-primary-700">VPNOverview.com</span></h3>
+            <p class="text-[#fbfbfb] text-size_18 my-5">We all have the right to privacy and the protection of our personal data. That was the fundamental thought on which we built our website. Our site contains information on VPNs, online privacy, security, and responsible internet use. With a small dedicated team of professionals we strive to post current and high-quality content on our platform.</p>
+
+            {% include 'partials/button.twig' with {
+                theme: '', 
+                text:fields.btn_name,
+                url: fields.btn_link,
+                class: "whitespace-nowrap w-fit md:mt-10",
+                } only
+            %}    
+        </div>
+        <div class="w-2/4 grid grid-cols-2 md:mt-10 md:w-full sm:flex-col">
+            {% for item in fields.items %}
+                <div class="flex justify-start items-center md:flex-col md:justify-center md:items-center md:mt-5">
+                    <div class="relative w-16 h-16 bg-transparent rounded-full border border-secondary-800">
+                        <img class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-12 h-12 rounded-full"src="{{ item.image.url }}">
+                    </div>
+                    <div class="flex flex-col justify-center align-middle ml-4 md:mt-3">
+                        <p class="font-msr text-size_15 text-[#fbfbfb] font-semibold flex-wrap md:text-center">{{ item.name }}</p>
+                        <p class="font-msr text-size_14 text-[#fbfbfb] font-normal mt-2 flex-wrap md:text-center">{{ item.position }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

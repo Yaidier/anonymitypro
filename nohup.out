@@ -1,0 +1,15 @@
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port) :-(
+Error: Invalid cron event 'reverse_cache'
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port) :-(
+Error: Invalid cron event 'reverse_cache'
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port) :-(
+Executed the cron event 'reverse_cache' in 50.828s.
+Success: Executed a total of 1 cron event.
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port) :-(
+Executed the cron event 'reverse_cache' in 22.89s.
+Success: Executed a total of 1 cron event.
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port) :-(
+Executed the cron event 'reverse_cache' in 10.015s.
+Success: Executed a total of 1 cron event.
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port) :-(
+Error: Invalid cron event 'reverse_cache'

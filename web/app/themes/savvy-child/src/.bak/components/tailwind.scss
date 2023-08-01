@@ -1,0 +1,11 @@
+@tailwind base;
+
+/**
+* Load Defaults Styles for the Theme
+* just after Tailwind's Preflight properties
+*/
+@import "defaults";
+
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;

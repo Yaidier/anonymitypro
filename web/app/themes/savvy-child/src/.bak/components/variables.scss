@@ -1,0 +1,72 @@
+//
+// Brand Colors
+//
+
+//Primary Colors
+$primary_700: theme('colors.primary.700');
+$primary_400: theme('colors.primary.400');
+$primary_alt_400: theme('colors.primary_alt.400');
+
+//Secondary Colors
+$secondary_200: theme('colors.secondary.200');
+
+//Dark Colors
+$dark_100: theme('colors.dark.100');
+$dark_200: theme('colors.dark.200');
+$dark_300: theme('colors.dark.300');
+$dark_400: theme('colors.dark.400');
+$dark_500: theme('colors.dark.500');
+$dark_600: theme('colors.dark.600');
+$dark_700: theme('colors.dark.700');
+
+//Others Colors
+$white: theme('colors.white');
+$black: theme('colors.black');
+$transparent: theme('colors.transparent');
+$disclosure: theme('colors.disclosure.500');
+
+//
+// Font Families
+//
+:root {
+    --font_mulish: sans-serif, 'Mulish';
+    --font_inter: sans-serif, 'Inter';
+}
+
+//
+// Font Sizes
+//
+$font_size_h1: theme('fontSize.h1.0');
+$font_size_h2: theme('fontSize.h2.0');
+$font_size_h3: theme('fontSize.h3.0');
+$font_size_h4: theme('fontSize.h4.0');
+$font_size_h5: theme('fontSize.h5.0');
+$font_size_h6: theme('fontSize.h6.0');
+$font_size_base: theme('fontSize.base.0');
+$font_size_xs: theme('fontSize.xs.0');
+$font_size_icon: theme('fontSize.icon.0');
+$font_size_xf: theme('fontSize.xf.0');
+
+//
+// Line Height
+//
+$line_height_h1: theme('fontSize.h1.1');
+$line_height_h2: theme('fontSize.h2.1');
+$line_height_h3: theme('fontSize.h3.1');
+$line_height_h4: theme('fontSize.h4.1');
+$line_height_h5: theme('fontSize.h5.1');
+$line_height_h6: theme('fontSize.h6.1');
+$line_height_base: theme('fontSize.base.1');
+$line_height_xs: theme('fontSize.xs.1');
+$line_height_icon: theme('fontSize.icon.1');
+$line_height_xf: theme('fontSize.xf.1');
+
+//
+// Border Radius
+//
+$br_lg: theme('borderRadius.lg');
+
+//
+// Screens
+//
+$bp_lg: theme('screens.lg.max');

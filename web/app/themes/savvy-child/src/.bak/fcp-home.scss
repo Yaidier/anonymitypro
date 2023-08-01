@@ -1,0 +1,29 @@
+/**
+* First Content Paint (FCP) Styles for Home Page.
+* This styles are added inline into the layouts/base.twig 
+*/
+
+@import "components/variables";
+// @import "components/mixins";
+
+/**
+* Load Tailwind Preflight
+*/
+@tailwind base;
+
+/**
+* Load Defaults Styles for the Theme
+* just after Tailwind's Preflight properties
+*/
+@import "components/typography";
+
+/**
+* Load header, subheader and 
+* breacrumbs custom styles
+*/
+@import "components/header";
+@import "components/breadcrumbs";
+
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;

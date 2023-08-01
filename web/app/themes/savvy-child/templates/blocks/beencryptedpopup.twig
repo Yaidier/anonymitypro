@@ -1,0 +1,28 @@
+<section class="vv-beencryptedpopup py-20">
+    
+    <div class="container relative flex w-[900px] h-[600px] bg-[#d4e4e7] rounded-md p-10 gap-20 md:justify-center md:items-center">
+        {% include 'partials/icons.twig' with { icon: 'vv-icon_cancel', class: 'absolute top-4 right-4 fill-#087887 w-5 h-auto pl-2 cursor-pointer transition duration-700 group-hover:fill-#0b2434 group-hover:transition group-hover:duration-700' } %}
+        <div>
+            <span class="text-[#0b2434] block text-center font-normal">Act now - Limited Time Offer</span>
+            <span class=" text-size_32 text-[#0b2434] font-bold block text-center mt-3">Get 82% Off + 2 Months Free</span>
+            <span class="w-fit block text-[#087887] bg-[#c8dde0] text-center py-1 px-2 mt-3 mx-auto">of our #1 rated VPN service</span>
+            <ul class="mt-10">
+                <li class="mt-3 relative before:absolute before:content-[''] before:top-[8px] before:-left-2.5 before:block before:rounded-full before:w-1.5 before:h-1.5 before:bg-[#122f41]">3000+ VPN servers in over 90 countries</li>
+                <li class="mt-3 relative before:absolute before:content-[''] before:top-[8px] before:-left-2.5 before:block before:rounded-full before:w-1.5 before:h-1.5 before:bg-[#122f41]">Supports torrenting and unlimited bandwidth</li>
+                <li class="mt-3 relative before:absolute before:content-[''] before:top-[8px] before:-left-2.5 before:block before:rounded-full before:w-1.5 before:h-1.5 before:bg-[#122f41]">Unblocks all streaming services</li>
+                <li class="mt-3 relative before:absolute before:content-[''] before:top-[8px] before:-left-2.5 before:block before:rounded-full before:w-1.5 before:h-1.5 before:bg-[#122f41]">Fast speeds</li>
+            </ul>
+            <div class="ps-popup_btn_close">
+                <a href="#" class="group flex justify-center items-center bg-[#087887] w-full rounded-md mt-5 py-2 transition duration-700 hover:bg-[#0e2a3c] hover:transition hover:duration-700">
+                    <span class="text-[#0b2434] transition duration-700 group-hover:text-white grouo-hover:transition group-hover:duration-700">Get Exclusive Deal</span>
+                    {% include 'partials/icons.twig' with { icon: 'vv-icon_chevron_right', class: 'fill-#0b2434 w-5 h-auto pl-2 transition duration-700 group-hover:fill-white group-hover:transition group-hover:duration-700' } %}
+                </a>
+            </div>
+            <p class="text-center text-size_15 text-[#0b2434]/40 mt-3">30-day money-back guarantee</p>
+            <button class="ps-popup_btn_close block cursor-pointer mx-auto text-center text-[#0b2434] mt-5 hover:text-[#087887]">No thanks</button>
+        </div>
+        <div class="md:hidden">
+            <img class="max-w-[340px]" src="/app/themes/savvy-child/assets/favicons/encrypted.png">
+        </div>
+    </div>
+</section> 

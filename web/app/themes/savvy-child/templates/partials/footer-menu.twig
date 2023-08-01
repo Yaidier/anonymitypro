@@ -1,0 +1,9 @@
+{# WN Ready #}
+<nav itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <h5 class="relative w-fit z-10 text-white mb-9 lg:mb-6 lg:text-[22px] lg:font-bold">{{logo_icon}}{{ menu.name }}</h5>
+    <ul class="list-none">
+        {% for item in menu.get_items() %}
+            <li class="mb-5 lg:mb-4 before:hidden ml-0"><a itemprop="url" class="text-xf text-dark-200 no-underline hover:text-primary-700 lg:text-base lg:text-dark-500 lg:font-normal" href="{{item.link}}"><span itemprop="name" class="">{{item.title}}</span></a></li>
+        {% endfor %}
+    </ul>
+</nav>

@@ -1,0 +1,65 @@
+{# WN Ready #}
+
+{% extends "layouts/base.twig" %}
+
+{% block content %}
+
+    {# {% include "partials/topbar.twig" %} #}
+    {# {% include 'partials/breadcrumbs.twig' %} #}
+    {# {% include 'partials/subheader.twig' with { title: post.title, intro: post.meta('intro'), disclosure_content: options.affiliate_disclosure, show_published_date: true } %} #}
+
+
+    <section class="vv-post bg-white container">
+        <h1 class="text-primary-800 text-left py-5 ">{{ post.title }}</h1> 
+        <div class="flex justify-between gap-10 pt-5 pb-24">
+            <article class="se-post_content w-8/12 lg:w-full">
+                {% set featured_img_tag = function('get_the_post_thumbnail', post.id, 'sc-post-main', { 'class': 'w-full h-96 rounded-xl object-cover shadow-lg' } )|raw %}
+                {% if ( fields.featured_img_tag != 'featured_img_tag' )  %} 
+                    <figure class="mb-4">
+                        {{ featured_img_tag }}
+                        <figcaption>{{ function('get_the_post_thumbnail_caption', post.id) }}</figcaption>
+                    </figure>
+                 {% endif  %}
+
+                {{ post.content | raw }}
+        
+            </article>
+                
+            <div class=" bg-secondary-800 sticky py-5 h-fit top-0 w-4/12 rounded-md border border-secondary-50/25 ml-3.5 lg:fixed lg:top-0 lg:left-0 lg:w-full lg:ml-0 lg:py-0 md:hidden">
+                {{ dynamic_sidebar | raw }}
+                
+                <div class="relative px-10 ">
+                    <input type="text" name="newsletter_email" id="newsletter_email" placeholder="Search" class="w-full bg-white rounded-md border border-secondary-50/25 py-3 pl-5 pr-16 outline-none">
+                </div>
+            </div>   
+        </div>
+    </section>
+
+    {# {% include 'partials/footer.twig' %} #}
+    {% include 'partials/back-to-top.twig' %}
+{% endblock %}
+
+
+{# Post Contentt #}
+               
+
+{# Share Buttons #}
+{# <div class="mb-14">
+    <h3 class="">{{ __( 'Share this article', 'savvy' ) }}</h3>
+    <div class="flex flex-wrap">
+        {% include 'partials/sharers.twig' with { post: post } %}
+    </div>
+</div> #}
+
+{# Aurhor #}
+{# {% include 'partials/author.twig' with { heading: __( 'About the Author', 'savvy' ), author: post.author, wrap_prop: 'bg-blue-100 p-7 mb-10 md:flex-col' } %} #}
+
+{# Comments Form #}
+{# {% if post.comment_status == "open" %}
+    {% include "partials/comment-form.twig" %}  
+{% endif %} #}
+
+{# Comments #}
+{# {% if post.comments %}
+    {% include "partials/comment-block.twig" %}
+{% endif %} #}

@@ -1,0 +1,12 @@
+{# WN Ready #}
+
+{% if menu %}
+	<ul itemscope itemtype="https://schema.org/SiteNavigationElement" class="ps-header_nav_menu_content flex justify-end flex-row lg:overflow-scroll lg:flex-col lg:h-full lg:justify-start lg:max-w-xs lg:bg-white lg:px-4 lg:py-4 lg:-translate-x-full">
+        <div class="hidden max-w-[173px] h-fit lg:block">
+        {% if logo %}
+            <img width="173px" height="32px" src="{{logo.url}}" loading="lazy" alt='{{logo.alt}}'>
+        {% endif %}
+        </div>
+        {% include "partials/menu-iterator.twig" with { 'menu': menu } %}
+	</ul>
+{% endif %}

@@ -1,0 +1,41 @@
+{# WN Ready #}
+
+{% set theme = '' %} 
+
+
+{% set header_class = (theme == 'dark') ? 'bg-primary-800' : 'bg-white' %}
+{% set finder_icon = (theme == 'dark') ? 'fill-white' : 'bg-black' %}
+
+<header class="se-header {{header_class}} shadow border-2 border-b-secondary-50/25">
+    <div class="container flex justify-center items-center px-20 py-1.5 h-full lg:justify-between">
+        <div class="">
+            <a href="{{home_url}}">
+                <img width="{{logo_size}}" height="38px" src="{{site_logo_url}}" alt='VPNVerity Logo'>
+            </a>
+        </div>
+        <div class="flex justify-start items-center pl-8 h-full lg:hidden">
+            {% if header_menu %}
+                <ul itemscope itemtype="https://schema.org/SiteNavigationElement" class="ev-header_nav_menu_content flex justify-end flex-row gap-8 h-full lg:overflow-scroll lg:flex-col lg:h-full lg:justify-start lg:max-w-xs lg:bg-white lg:px-4 lg:py-4 lg:-translate-x-full">
+                    <div class="hidden max-w-[173px] h-fit lg:block">
+                        <img width="173px" height="32px" src="{{site_logo_white_url}}" loading="lazy" alt='ExtremeVPN Logo'>
+                    </div>
+                    {% include "partials/menu-iterator.twig" with { 'menu': header_menu } %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="flex justify-center items-center pl-10">
+            {% include 'partials/button.twig' with {
+                theme: 'radial_gradient', 
+                text: 'Best VPNs',
+                url: 'google.com',
+                class: "p-0.5 whitespace-nowrap",
+                } only
+            %}
+            
+            <a href="#">
+                {% include "partials/icons.twig" with { icon: "vv-icon_search", class: "h-5 w-5 {{finder_icon}} ml-2" } %}
+            </a>  
+        </div>
+    </div>  
+</header>
+

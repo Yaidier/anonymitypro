@@ -1,0 +1,29 @@
+//
+// Media up
+//
+// Media rule for screen width larger than breakpoint value or equal
+// >> breakpoint name || value of screen width, [breakpoints-map]
+//
+@mixin media-up($breakpoint, $breakpoints-map: $breakpoints) {
+    @if type-of($breakpoint) == string {
+        $breakpoint: map-get($breakpoints-map, $breakpoint);
+    }
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+//
+// Media down
+//
+// Media rule for screen width equal to breakpoint value - 1 or less
+// >> breakpoint name || value of screen width, [breakpoints-map]
+//
+@mixin media-down($breakpoint, $breakpoints-map: $breakpoints) {
+    @if type-of($breakpoint) == string {
+        $breakpoint: map-get($breakpoints-map, $breakpoint);
+    }
+    @media (max-width: $breakpoint - 1) {
+        @content;
+    }
+}

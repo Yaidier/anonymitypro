@@ -1,0 +1,9 @@
+.ps-toptentable {
+    ul > li{
+        margin-left: 0px;
+
+        &::before {
+            display: none;
+        }
+    }
+}

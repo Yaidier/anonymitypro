@@ -1,0 +1,66 @@
+<section class="vv-imageandcontent bg-primary-600 py-10">
+    {% if ( fields.title ) %}
+    <h3 class="text-center text-dark-800">{{ fields.title }}</h3>
+    {% endif %}
+    {% for item in fields.items %}
+        <div class="container flex justify-start gap-24 py-16 md:hidden {% if item.invert %} flex-row-reverse {% endif %}">
+            <div class="flex justify-center items-center w-2/4 lg:w-full">
+                <img class="block h-auto md:mx-auto" src="{{ item.image.url }}">
+            </div>
+            <div class="flex-col w-2/4 lg:w-full lg:mt-16">
+                <h3 class="text-left  text-dark-800 md:text-center">{{ item.name }}</h3>
+                <div class="vv-image_intro text-secondary-800 text-size_18 font-bold text-left mt-6 pb-5">{{ item.intro }}</div>
+                <div class="grid grid-cols-2 gap-5 float-left md:hidden">
+                    {% for btns in item.buttons %}
+                        {% include 'partials/button.twig' with {
+                            theme: 'radial_gradient', 
+                            text: btns.btn_name,
+                            url: btns.btn_link,
+                            class: "whitespace-nowrap md:mt-10",
+                            } only
+                        %}
+                    {% endfor %}   
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="vv-image_and_content_carousel hidden wn-carousel mt-10 mx-5 md:border-2 md:border-secondary-800 md:rounded-md md:px-8 md:visible" style="display:none" data-desktop="1" data-tablet="1" data-mobile="1" data-autoplay="false" data-autoplaydelay="0" data-duration="400" data-autoplaydirection="right" data-transitiontype="ease">
+        <div class="wn-carousel_bts top-5 left-2/4 -translate-x-2/4 z-40 ">
+            <button class="wn-carousel_btn_prev group relative z-10 w-14 h-10 rounded-full border-2 border-secondary-800 bg-transparent hover:bg-secondary-800 ">
+                {% include "partials/icons.twig" with { icon: "vv-icon_arrow_up", class: "absolute fill-secondary-800 -rotate-90 w-4 h-4 top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 group-hover:fill-white" } %}
+            </button>
+            <button class="wn-carousel_btn_next relative group z-10 w-14 h-10 rounded-full border-2 border-secondary-800 bg-transparent hover:bg-secondary-800  ">
+                {% include "partials/icons.twig" with { icon: "vv-icon_arrow_up", class: "absolute fill-secondary-800 rotate-90 w-4 h-4  top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 group-hover:fill-white" } %}
+            </button>
+        </div>
+        {% for item in fields.items %}
+            <div class="wn-carousel_item container flex flex-col justify-center gap-24 pb-14 pt-20 mx-10{% if item.invert %} flex-row-reverse {% endif %}">
+                <div class="flex justify-center items-center w-2/4 lg:w-full">
+                    <img class="w-[350px] h-auto" src="{{ item.image.url }}">
+                    <h3 class="text-dark-800">{{ item.name }}</h3>
+                </div>
+                <div class="hidden md:flex md:justify-center gap-3 md:items-center md:flex-wrap">
+                    
+                    {% for btns in item.buttons %}
+                        {% include 'partials/button.twig' with {
+                            theme: 'radial_gradient', 
+                            text: btns.btn_name,
+                            url: btns.btn_link,
+                            class: "whitespace-nowrap",
+                            } only
+                        %}
+                    {% endfor %}   
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+
+
+
+
+
+

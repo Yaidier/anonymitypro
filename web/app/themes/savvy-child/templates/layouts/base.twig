@@ -1,0 +1,70 @@
+<!doctype html>
+<html {{ site.language_attributes | raw }}>
+    <head>
+        <meta charset="{{ site.charset }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/app/themes/savvy-child/assets/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/app/themes/savvy-child/assets/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/app/themes/savvy-child/assets/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/app/themes/savvy-child/assets/favicons/site.webmanifest">
+        <link rel="mask-icon" href="/app/themes/savvy-child/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="/app/themes/savvy-child/assets/favicons/favicon.ico">
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="msapplication-config" content="/app/themes/savvy-child/assets/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#333333">
+
+        {% set front_page   = function('is_front_page') | raw %}
+        {% set is_single    = function('is_single') | raw %}
+
+        <!-- Inline First Content Paint (FCP) Styles -->
+        {% if front_page %}
+            <!-- Inline FCP CSS for Home Page -->
+            <style>
+                {% include '/assets/css/ps-fcp-home.css' %}
+            </style>
+        {% elseif is_single %}
+            <!-- Inline FCP CSS for Single Page -->
+            <style>
+                {% include '/assets/css/ps-fcp-single.css' %}
+            </style>
+        {% else %}
+            <!-- Inline FCP CSS for archive, categories, template-vpn-comparison, page, template-single-generate, template-what-is-my-ip -->
+            <style>
+                {% include '/assets/css/ps-fcp-archive.css' %}
+            </style>
+        {% endif %}
+        
+        {# Execute wp_head hook #}
+        {{ function('wp_head') | raw }}
+    </head>
+    <body class="{{ body_class }} overflow-x-hidden">
+        {{ function('wp_body_open') | raw }}
+
+        {# Insert the Header #}
+        {% include "partials/topbar.twig" with { theme: 'dark' } %}
+        {# {% include "partials/topbardark.twig" %} #}
+
+        {# Calls the Block Content #}
+        {% block content %}
+            Sorry, no content
+        {% endblock %}
+
+        {# Insert Popup #}
+        {% if not load_popup_from_lrc and include_popup %}
+            {% include 'popups/' ~ include_popup %}
+        {% endif %}
+
+        {# Insert the Footer #}
+        {% include 'partials/footer.twig' %}
+        {% include 'partials/back-to-top.twig' %}
+
+        {# Insert the Cookies Bar #}
+        {% include 'partials/cookie-bar.twig' %}
+        
+        {# Fire the wp_footer action. #}
+        {{ function('wp_footer') | raw }}
+    </body>
+</html>

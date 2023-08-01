@@ -1,0 +1,13 @@
+input {
+    &:focus-visible {
+        outline: none;
+        border-color: $primary_700;
+    }
+}
+
+textarea {
+    &:focus-visible {
+        outline: none;
+        border-color: $primary_700;
+    }
+}

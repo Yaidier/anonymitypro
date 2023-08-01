@@ -1,0 +1,24 @@
+.ps-breadcrumbs {
+    nav {
+        a,
+        span {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 18px;
+            letter-spacing: 0.09em;
+            color: $dark_600;
+            text-decoration: none;
+        }
+
+        i {
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 12px;
+            color: $dark_600;
+        }
+
+        a:hover {
+            color: $primary_700;
+        }
+    }
+}

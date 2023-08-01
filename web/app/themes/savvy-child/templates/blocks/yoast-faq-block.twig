@@ -1,0 +1,19 @@
+{# WN Ready #}
+
+{% for item in block.attrs.questions %}
+    <div class="ps-faqs relative shadow-md hover:shadow-lg transition-shadow duration-300 mb-4 rounded-xl overflow-hidden ">
+        <input class="ps-faqs_input peer hidden" type="checkbox" id="ps-faqs-control-{{loop.index}}"/>
+        <label class="flex justify-between items-center py-5 px-7 bg-primary-75 cursor-pointer" for="ps-faqs-control-{{loop.index}}">
+            <span class="text-dark-600 mr-2 font-mulish text-base font-semibold">{{item.jsonQuestion|striptags}}</span>
+            {% include 'partials/icons.twig' with { icon : 'sc-icon_plus', class : 'sc-faqs_plus w-5 h-5 fill-dark-600' } %}
+            {% include 'partials/icons.twig' with { icon : 'sc-icon_minus', class : 'sc-faqs_minus hidden w-5 h-5 fill-primary-700' } %}
+        </label>
+        <div class="max-h-0 px-7 pb-0 bg-primary-75 transition-all duration-200 h-fit overflow-hidden peer-checked:max-h-screen peer-checked:pb-5">
+            {% for item in item.answer %}
+                {% if item is not iterable %}
+                    <p class="{% if not loop.last %}mb-2{% endif %} font-inter text-xs font-normal text-dark-600">{{item}}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div> 
+{% endfor %}

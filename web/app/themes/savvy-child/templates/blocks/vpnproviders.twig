@@ -1,0 +1,52 @@
+<section class="vv-vpnproviders bg-primary-600 px-3">
+    <div class="container flex flex-col py-20 px-10 lg:justify-center lg:items-center">
+        <div class="flex justify-between items-center lg:justify-center">
+            {% if ( fields.title ) %}
+                <h3 class="font-semibold text-dark-800 capitalize">{{ fields.title }}</h3>
+            {% endif %}
+
+            {% if ( fields.btn_text != '' )  %} 
+                {% include 'partials/button.twig' with {
+                    theme: 'radial_gradient_svg', 
+                    text: fields.btn_text,
+                    url: fields.btn_link,
+                    class: "whitespace-nowrap md:hidden",
+                    } only
+                %}
+            {% endif %}
+        </div>
+        <div class="wn-carousel mt-10" data-desktop="4" data-tablet="3" data-mobile="1" data-autoplay="false" data-autoplaydelay="0" data-duration="400" data-autoplaydirection="right" data-transitiontype="ease">
+            <div class="wn-carousel_bts w-full">
+                <button class="wn-carousel_btn_prev absolute z-10 w-10 h-10 top-20 -left-10 rounded-full bg-dark-800 ">
+                    {% include "partials/icons.twig" with { icon: "vv-icon_arrow_up", class: "absolute fill-white -rotate-90 w-4 h-4 top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4" } %}
+                </button>
+                <button class="wn-carousel_btn_next absolute z-10 w-10 h-10 top-20 -right-10 rounded-full bg-dark-800 ">
+                    {% include "partials/icons.twig" with { icon: "vv-icon_arrow_up", class: "absolute fill-white rotate-90 w-4 h-4  top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4" } %}
+                </button>
+            </div>
+        
+            {% for item in fields.items %}
+                <div class="wn-carousel_item flex justify-center items-start pt-4 pb-8">
+                    <a href="#" class="relative group w-52 h-52  flex flex-col justify-center items-center border-2 border-primary-700 rounded-md transition duration-500 hover:bg-secondary-800 hover-transition hover:duration-500">
+                        <img class="absolute w-28 h-auto top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 group-hover:hidden" src="{{ item.image.url }}">
+                        <span class="text-white font-medium text-size_24 text-center">{{ item.name }}</span>
+                        {% include 'partials/icons.twig' with { icon: 'vv-icon_arrow_up', class: 'absolute fill-transparent w-4 h-4 mt-16 transform rotate-90 group-hover:fill-dark-800' } %}
+                        <div class="absolute -top-[0px] -left-[2px] w-fit bg-gradient-to-r from-primary-700 to-secondary-800 py-0.5 px-2 rounded-tl-md rounded-br-md group-hover:to-primary-700">
+                            <span class="block font-medium text-size_14 text-white">{{ item.title }}</span>
+                            <span class="block font-semibold text-size_19 text-white">{{ item.description }}</span>
+                        </div>
+                        <div class="absolute w-12 h-12 -top-[0px] -right-[2px] flex justify-center items-center bg-primary-700 rounded-tr-md rounded-bl-md">
+                            <span class="font-black text-size_20 text-white">{{ item.score }}</span>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <a role="button" href="{{url}}" class="hidden group items-center w-fit bg-primary-700 border border-transparent rounded-full transition no-underline hover:border hover:border-transparent md:block">
+            <div class="flex justify-center items-center px-3 py-2 bg-white rounded-full group-hover:bg-primary-600">
+                <span class="font-msr text-size_17 font-semibold text-primary-700 mr-3">See all reviews</span>
+                {% include 'partials/icons.twig' with { icon: 'vv-icon_arrow_up', class: 'fill-primary-700 w-3 h-3 transform rotate-90' } %} 
+            </div>   
+        </a>   
+    </div>
+</section>

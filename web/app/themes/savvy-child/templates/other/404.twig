@@ -1,0 +1,30 @@
+{# WN Ready #}
+
+{% extends "layouts/base.twig" %}
+{% block content %}
+    {% include "partials/topbar.twig" %}
+    <section id="ps-not_found_page" class="flex items-center bg-gradient-to-br from-[#FFF0D9] to-[#FFFBEF] min-h-[calc(100vh_-_572px)] py-28 lg:py-10">
+        <div class="container w-full flex justify-between items-center lg:flex-col">
+            <div class="w-6/12 lg:max-w-[592px] lg:w-full lg:text-center lg:mb-12">
+                <span class="block text-[200px] font-mulish text-dark-700 font-bold leading-[1em] sm:text-[100px] ">404</span>
+                <h1 class="text-dark-600 text-h3 ">We haven't found this page...</h1>
+                {# {% include 'partials/button.twig' with { 
+                    text: 'Go back to Home',
+                    full_width: false,
+                    href: home_url,
+                    icon: 'sc-angle-right',
+                    size: 'medium',
+                    nofollow: true,
+                    newtab: false,
+                    align: 'left',
+                    theme: 'orange',
+                } %} #}
+            </div>
+            <div class="w-6/12 lg:w-full" >
+                <img class="block object-contain w-auto h-96 ml-auto lg:mx-auto" src="{{hero_image}}">
+            </div>
+        </div>
+    </section>
+    {% include 'partials/footer.twig' %}
+    {% include 'partials/back-to-top.twig' %}
+{% endblock %}

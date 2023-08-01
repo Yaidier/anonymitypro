@@ -1,0 +1,58 @@
+.ps-header {
+    /*
+    * Polylang Language Switcher Styles
+    */
+    &_nav_menu_content {
+        li:last-of-type {
+            a {
+                > span {
+                    display: inline-flex;
+                    justify-content: flex-start;
+                    align-items: center;
+
+                    > img {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1109px) {
+        &_nav_menu {
+            transition: opacity 0.3s ease;
+
+            &_content {
+                transition: opacity 0.3s ease, transform 0.3s ease ;
+            }
+        }
+
+        &.ps-header_nav_menu__active{
+
+            .ps-header_nav_menu {
+                opacity: 1;
+                pointer-events: auto;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+    
+                > .ps-header_nav_menu_content {
+                    transform: translateX(0);
+                    transition: opacity 0.3s ease, transform 0.3s ease ;
+                }
+
+            }
+                
+            .ps-header_nav_menu_btn__close {
+                display: block;
+            }
+        }
+    }
+}
+
+.ps-subheader_inner {
+    p {
+        &:last-child {
+            margin-bottom: 0px;
+        }
+    }
+}
+

@@ -1,0 +1,66 @@
+.ps-footer {
+    /*
+    * Polylang Language Switcher Styles
+    */
+    &_language {
+        a {
+            > span {
+                display: inline-flex;
+                justify-content: flex-start;
+                align-items: center;
+                
+                > img {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    &_newsletter {
+        > form {
+            input[type=email]{
+                position: relative;
+                width: 100%;
+                height: 44px;
+                border: 1.5px solid $dark_600;
+                box-sizing: border-box;
+                border-radius: $br_lg;
+                background-color: $transparent;
+                padding-left: 20px;
+                padding-right: 20px;
+                color: $dark_400;
+                font-size: 13px;
+                line-height: 15px;
+                margin-bottom: 25px;
+
+                &:focus-visible {
+                    outline: none;
+                    color: $dark_400;
+                }
+
+                @media only screen and (max-width: 1109px){
+                    background-color: $white;
+                    border-color: $transparent
+                }
+            }
+
+            input[type=submit] {
+                width: 100%;
+                height: 44px;
+                background-color: $primary_700;
+                color: $white;
+                font-family: var(--font_mulish);
+                font-size: 16px;
+                line-height: 20px;
+                font-weight: 600;
+                border-radius: $br_lg;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $secondary_200;
+                    color: $white;
+                }
+            }
+        }
+    }
+}

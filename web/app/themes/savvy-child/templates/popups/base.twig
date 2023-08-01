@@ -1,0 +1,16 @@
+{# WN Ready #}
+
+{# inline LRC Css #}
+<style>
+    {% include '/assets/css/ps-lrc.css' %}
+</style>
+
+<div id="ps-popup" class="ps-popup ps-popup_btn_close fixed z-50 opacity-0 invisible flex left-0 top-0 justify-center items-center w-screen h-screen bg-dark_overlay-600">
+    <div class="ps-popup_content opacity-0 -translate-y-1/4 relative w-9/12 max-w-4xl bg-white rounded-lg overflow-hidden lg:w-11/12">
+        {% include 'partials/icons.twig' with { icon : 'sc-icon_cancel', class : 'cursor-pointer ps-popup_btn_close absolute right-2 top-2 z-20 fill-dark-400 w-6 h-6 hover:fill-dark-600' } %}
+
+        {% block content %}
+            Sorry, no content
+        {% endblock %}
+    </div>
+</div>

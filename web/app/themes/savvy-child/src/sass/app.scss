@@ -1,0 +1,12 @@
+@import "components/fonts";
+@import "components/variables";
+@import "components/forms";
+@import "components/post";
+@import "components/blocks";
+
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@import "components/common";
+@import "components/footer";

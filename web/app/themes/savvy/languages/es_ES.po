@@ -1,0 +1,187 @@
+# Copyright (C) 2022 Yaidier Perez
+# This file is distributed under the .
+msgid ""
+msgstr ""
+"Project-Id-Version: Privacy Savvy\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/privacysavvy\n"
+"POT-Creation-Date: 2022-10-31T16:54:57+00:00\n"
+"PO-Revision-Date: 2022-11-11 17:47+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2\n"
+"X-Domain: privacysavvy\n"
+
+#. Theme Name of the theme
+msgid "Privacy Savvy"
+msgstr ""
+
+#. Description of the theme
+msgid "Privacy Savvy Theme"
+msgstr ""
+
+#. Author of the theme
+msgid "Yaidier Perez"
+msgstr ""
+
+#: functions.php:49
+msgid "Hello"
+msgstr "Hola"
+
+#. Template Name of the theme
+msgid "News"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Contained Page"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Paid Ads Page"
+msgstr ""
+
+#. Template Name of the theme
+msgid "password-generator-&-scanner"
+msgstr ""
+
+#. Template Name of the theme
+msgid "vpn-comparison"
+msgstr ""
+
+#. Template Name of the theme
+msgid "what-is-my-ip"
+msgstr ""
+
+#. footer.twig, line 16
+msgid "On a mission to make every internet user privacy savvy."
+msgstr "En una misión para hacer que todos los usuarios de Internet sean expertos en privacidad."
+
+#. table-of-contents.twig, line 29
+msgid "of readers found this article <b>helpful.</b>"
+msgstr "de los lectores encontraron este artículo <b>útil.</b>"
+
+#. table-of-contents.twig, line 34
+msgid "votes"
+msgstr "votos"
+
+#. table-of-contents.twig, line 34
+msgid "Click a star to add your vote"
+msgstr "Haga clic en una estrella para agregar su voto"
+
+#. table-of-contents.twig, line 23
+msgid "Unhelpful,Mostly unhelpful,Possibly helpful,Mostly helpful,Very helpful"
+msgstr "Inútil, Mayormente inútil, Posiblemente útil, Mayormente útil, Muy útil"
+
+#. table-of-contents.twig, line 37
+msgid "Thanks for voting!"
+msgstr "Gracias por votar!"
+
+#. table-of-contents.twig, line 37
+msgid "Trial Risk-Free"
+msgstr "Prueba Sin Riesgos"
+
+#. table-of-contents.twig, line 37
+msgid "Our #1 Pick"
+msgstr "Nuestra elección n.º 1"
+
+#. subheader.twig
+msgid "Last updated"
+msgstr "Última actualización"
+
+#. subheader.twig
+msgid "January"
+msgstr "Enero"
+
+msgid "February"
+msgstr "Febrero"
+
+msgid "March"
+msgstr "Marzo"
+
+msgid "April"
+msgstr "Abril"
+
+msgid "Mayo"
+msgstr "May"
+
+msgid "June"
+msgstr "Junio"
+
+msgid "July"
+msgstr "Julio"
+
+msgid "August"
+msgstr "Agosto"
+
+msgid "September"
+msgstr "Septiembre"
+
+msgid "October"
+msgstr "Octubre"
+
+msgid "November"
+msgstr "Noviembre"
+
+msgid "December"
+msgstr "Diciembre"
+
+msgid "Read time"
+msgstr "Tiempo de lectura"
+
+msgid "minutes"
+msgstr "minutos"
+
+msgid "Disclosure"
+msgstr "Información"
+
+msgid "All Rights Reserved"
+msgstr "Todos los derechos reservados"
+
+msgid "Share this article"
+msgstr "Comparte este artículo"
+
+msgid "<p>This is an estimated reading time to let you know how long it will take you to read all the content on this particular PrivacySavvy.com page. However, it has a sneak peek, easy guide steps, and/or a quick list providing <b>quick in-page navigations</b> and <b>easily-found answers</b> if desired.</p>"
+msgstr "<p>Este es un tiempo de lectura estimado para informarle cuánto tiempo le llevará leer todo el contenido de esta página en particular de PrivacySavvy.com. Sin embargo, tiene un adelanto, pasos de guía sencillos y/o una lista rápida que proporciona <b>navegaciones rápidas en la página</b> y <b>respuestas fáciles de encontrar</b> si lo desea.</p>"
+
+msgid "Related Readings"
+msgstr "Lecturas relacionadas"
+
+msgid "About the Author"
+msgstr "Sobre el Autor"
+
+msgid "More from"
+msgstr "Mas de"
+
+msgid "Got Something to Say?"
+msgstr "¿Tienes algo que decir?"
+
+msgid "Comments"
+msgstr "Comentarios"
+
+msgid "No comments."
+msgstr "No hay comentarios."
+
+msgid "Read More"
+msgstr "Lee mas"
+
+msgid "View All"
+msgstr "Ver Todo"
+
+msgid "Authors"
+msgstr "Autores"
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Page"
+msgstr "Pagina"
+
+msgid "Author at"
+msgstr "Autor en"
+
+msgid "of"
+msgstr "de"

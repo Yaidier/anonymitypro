@@ -1,0 +1,82 @@
+/**
+* Later Resource Call (LRC)
+*
+* These scripts are called later on by e.g. the 
+* popups which gets fired with and Ajax request 
+* 25s after the page got loaded.
+*/
+/**
+* Password Post Type Popup
+*/
+.ps-popup_animation * {
+  transition: 0.4s ease;
+}
+.ps-popup_animation #ps-nordpass_circles > circle {
+  stroke: transparent;
+  stroke-width: 1.5px;
+}
+.ps-popup_animation__active #ps-nordpass_lines > path {
+  stroke: #27AE60;
+  stroke-width: 3px;
+  stroke-dasharray: 30px 5px;
+  stroke-dashoffset: 0px;
+  animation-name: ps-popup_animation__flow;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  transition: 0.2s ease 0s;
+}
+.ps-popup_animation__active #ps-nordpass_circles > circle {
+  stroke: #27AE60;
+  transform-origin: 10px;
+  animation-name: ps-popup_animation__grow;
+  animation-duration: 0.4s;
+  animation-timing-function: ease;
+  animation-delay: 0.2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  transition: 0.2s ease 0.2s;
+}
+.ps-popup_animation__active #ps-nordpass_starsbg {
+  fill: #27AE60;
+  transition: 0.4s ease;
+}
+.ps-popup_animation__active #ps-nordpass_shield {
+  fill: white;
+  transition: 0.4s ease;
+}
+.ps-popup_animation__active #ps-nordpass_shield + #Vector_98 {
+  fill: #27AE60;
+  transition: 0.4s ease;
+}
+.ps-popup_animation__active #ps-nordpass_stars > path {
+  fill: #27AE60;
+  transition: 0.4s ease;
+}
+.ps-popup_animation__active #ps-nordpass_screen {
+  fill: white;
+  transition: 0.4s ease;
+}
+
+@keyframes ps-popup_animation__grow {
+  0% {
+    stroke-width: 1.5px;
+  }
+  100% {
+    stroke-width: 3px;
+  }
+}
+@keyframes ps-popup_animation__flow {
+  0% {
+    stroke-dashoffset: 35px;
+  }
+  100% {
+    stroke-dashoffset: 0px;
+  }
+}

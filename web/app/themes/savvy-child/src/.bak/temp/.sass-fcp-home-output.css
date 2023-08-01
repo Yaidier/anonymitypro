@@ -1,0 +1,165 @@
+/**
+* First Content Paint (FCP) Styles for Home Page.
+* This styles are added inline into the layouts/base.twig 
+*/
+:root {
+  --font_mulish: sans-serif, "Mulish";
+  --font_inter: sans-serif, "Inter";
+}
+
+/**
+* Load Tailwind Preflight
+*/
+@tailwind base;
+/**
+* Load Defaults Styles for the Theme
+* just after Tailwind's Preflight properties
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font_mulish);
+}
+
+p {
+  font-family: var(--font_inter);
+  font-size: 17px;
+  line-height: 27px;
+  font-weight: 300;
+  color: theme("colors.dark.600");
+  margin-bottom: 30px;
+}
+
+strong {
+  font-weight: 600;
+}
+
+b {
+  font-weight: 600;
+}
+
+a {
+  color: theme("colors.dark.700");
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-color: theme("colors.primary.700");
+  text-decoration-thickness: 2px;
+  cursor: pointer;
+}
+a:hover {
+  color: theme("colors.primary.700");
+}
+
+h1 {
+  font-size: theme("fontSize.h1.0");
+  font-weight: 700;
+  line-height: theme("fontSize.h1.1");
+  margin-bottom: 20px;
+  color: theme("colors.dark.700");
+}
+
+h2 {
+  font-size: theme("fontSize.h2.0");
+  font-weight: 700;
+  line-height: theme("fontSize.h2.1");
+  margin-bottom: 30px;
+  color: theme("colors.dark.700");
+}
+
+h3 {
+  font-size: theme("fontSize.h3.0");
+  font-weight: 700;
+  line-height: theme("fontSize.h3.1");
+  margin-bottom: 25px;
+  color: theme("colors.dark.700");
+}
+
+h4 {
+  font-size: theme("fontSize.h4.0");
+  font-weight: 700;
+  line-height: theme("fontSize.h4.1");
+  margin-bottom: 15px;
+  color: theme("colors.dark.700");
+}
+
+h5 {
+  font-size: theme("fontSize.h5.0");
+  font-weight: 700;
+  line-height: theme("fontSize.h5.1");
+  margin-bottom: 15px;
+  color: theme("colors.dark.700");
+}
+
+figcaption {
+  font-size: theme("fontSize.xs.0");
+  color: theme("colors.dark.400");
+  line-height: theme("fontSize.xs.1");
+}
+
+/**
+* Load header, subheader and 
+* breacrumbs custom styles
+*/
+.ps-header {
+  /*
+  * Polylang Language Switcher Styles
+  */
+}
+.ps-header_nav_menu_content li:last-of-type a > span {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.ps-header_nav_menu_content li:last-of-type a > span > img {
+  display: block;
+}
+@media only screen and (max-width: 1109px) {
+  .ps-header_nav_menu {
+    transition: opacity 0.3s ease;
+  }
+  .ps-header_nav_menu_content {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .ps-header.ps-header_nav_menu__active .ps-header_nav_menu {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .ps-header.ps-header_nav_menu__active .ps-header_nav_menu > .ps-header_nav_menu_content {
+    transform: translateX(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .ps-header.ps-header_nav_menu__active .ps-header_nav_menu_btn__close {
+    display: block;
+  }
+}
+
+.ps-subheader_inner p:last-child {
+  margin-bottom: 0px;
+}
+
+.ps-breadcrumbs nav a,
+.ps-breadcrumbs nav span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.09em;
+  color: theme("colors.dark.600");
+  text-decoration: none;
+}
+.ps-breadcrumbs nav i {
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 12px;
+  color: theme("colors.dark.600");
+}
+.ps-breadcrumbs nav a:hover {
+  color: theme("colors.primary.700");
+}
+
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;

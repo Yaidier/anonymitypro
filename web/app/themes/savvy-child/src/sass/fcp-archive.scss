@@ -1,0 +1,34 @@
+/**
+* First Content Paint (FCP) Styles for archive, categories, 
+* template-vpn-comparison, page, template-single-generate, 
+* template-what-is-my-ip. 
+* 
+* This styles are added inline into the layouts/base.twig.
+*/
+
+@import "components/variables";
+// @import "components/mixins";
+
+/**
+* Load Tailwind Preflight
+*/
+@tailwind base;
+
+/**
+* Load Defaults Styles for the Theme
+* just after Tailwind's Preflight properties
+*/
+@import "components/typography";
+
+/**
+* Load header, subheader and 
+* breacrumbs custom styles
+*/
+@import "components/header";
+@import "components/breadcrumbs";
+@import "components/common";
+@import "components/post";
+
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;

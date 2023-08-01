@@ -1,0 +1,360 @@
+.ps-heading_dec__line {
+    &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        left: 50%;
+        bottom: -15px;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 2px;
+        background-color: $primary_400;
+        z-index: -1;
+    }
+}
+
+.ps-heading_dec__logo {
+    &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 50%;
+        right: -43px;
+        transform: translateY(-50%);
+        width: 75px;
+        height: 75px;
+        background-image: url('/app/themes/savvychild-child/assets/svg/ps-heading-decoration.svg');
+        z-index: -2;
+    }
+}
+
+.ps-table_of_contents {
+    ol {
+        > li {
+            margin-bottom: 0px;
+        }
+    }
+
+    input:checked {
+        + div {
+            .ps-icon_chevrondown {
+                transform: rotate(180deg);
+            }
+
+            .ps-icon_bars {
+                display: none;
+            }
+
+            .ps-icon_cancel {
+                display: block;
+            }
+
+            @media screen and (min-width: 1109px) {
+                .ps-icon_bars {
+                    display: none;
+                }
+    
+                .ps-icon_cancel {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.ps-sidebar {
+    &_vpn {
+        &_block_widget {
+            position: sticky;
+            top: 0;
+        }
+    }
+}
+
+.ps-faqs {
+    > input {
+        &:checked {
+            + label {
+                > span {
+                    color: $primary_700;
+                }
+                > .ps-faqs_plus {
+                    display: none;
+                }
+                > .ps-faqs_minus {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    > div {
+        p:last-child {
+            margin-bottom: 0px;
+        }
+    }
+}
+
+.ps-news_sidebar {
+    &_content {
+        .widget_block.widget_categories {
+            position: relative;
+
+            &::before {
+                content: "\e916";
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                font-family: 'sc-icons' !important;
+                speak: never;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+                color: $dark_100;
+                font-size: 200px;
+            }
+            
+            ul {
+                > li {
+                    margin-left:0px;
+
+                    &::before {
+                        display: none;
+                    }
+                    
+                    &:not(:last-child){
+                        margin-bottom: 12px;
+                        padding-bottom: 12px;
+                        border-bottom: 1px solid $dark_200;
+                    }
+
+                    > a {
+                        position: relative;
+                        display: block;
+                        font-family: var(--font_mulish);
+                        font-weight: 500;
+                        font-size: $font_size_xs; 
+                        line-height: $line_height_xs; 
+                        color: $dark_600;
+                        text-decoration: none;
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            right: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            width: 15px;
+                            height: 15px;
+                            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="rgb(224, 224, 224)"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>');
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                        }
+
+                        &:hover {
+                            color: $dark_400;
+                        }
+                    } 
+                }
+            }
+        }
+    }
+}
+
+// Styles for Mailchimp content
+.ps-emailoptin {
+    form {
+        .mc4wp-form-fields {
+            input {
+                border-radius: 8px;
+                padding: 5px 10px;
+                width: 100%;
+                font-size: $font_size_xs;
+                min-height: 44px;
+            }
+
+            input[type="email"] {
+                border: 1.5px solid $dark_400;
+                font-weight: 400;
+                color: $dark_600;
+                margin-bottom: 30px;
+                background-color: transparent;
+                
+                &::placeholder {
+                    font-family: var(--font_mulish);
+                    font-size: $font_size_xs;
+                    font-weight: 400;
+                    color: $dark_500;
+                }
+            }
+
+            input[type="submit"] { 
+                color: $white;
+                background-color: $primary_700;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $secondary_200;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.valid {
+    color: $primary_700;
+}
+
+.ps-comparisontool{
+    &_checked {
+        background-color: $dark_700;
+        color: $primary_700;
+    }
+}
+
+//Custom transitions
+.ps-trans {
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease;
+
+    &_fade_in {
+        opacity: 1;
+        pointer-events: auto;
+        transition: 0.4s ease;
+    }
+}
+
+/*
+* Style Sidebar Scrollbar to show it thin and nice on Windows
+*/
+.ps-thin_scrollbar {
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.ps-thin_scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+    
+.ps-thin_scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+    
+.ps-thin_scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.199);
+    border-radius: 20px;
+    border: 3px solid transparent;
+}
+
+.ps-floating_banner {
+    transition: transform 0.4s ease;
+
+    &__show {
+        transition: transform 0.4s ease;
+        transform: translateY(0);
+    }
+}
+
+.ps-content_hr,
+.ps-separator {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.ps-infobox {
+    p, 
+    a {
+        font-size: 12px;
+        color: $dark_700;
+        line-height: 26px;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    p {
+        &:last-child {
+            margin-bottom: 0px;
+        }
+    }
+}
+
+.ps-logo_light {
+    #fingerprint path {
+        $letters: (1: 45, 2: 71, 3: 37, 4: 17, 5: 11);
+
+        @each $i, $v in $letters {
+            &:nth-child(#{$i}){
+                stroke-dasharray: $v;
+                stroke-dashoffset: $v;
+                animation: logo_animation 1s ease forwards (0.2s * $i);
+            }
+        }
+    }
+
+    #letters path {
+        opacity: 0;
+
+        @for $i from 1 through 12 {
+            &:nth-child(#{$i}){
+                animation: logo_animation_letters .7s ease forwards (0.1s * $i);
+            }
+        }
+    }
+}
+
+@keyframes logo_animation {
+    to {
+        stroke-dashoffset: 0px;
+    }
+}
+
+@keyframes logo_animation_letters {
+    to {
+        opacity: 1;
+    }
+}
+
+.ps-svg_lock {
+    g {
+        transform-origin: center center;
+    }
+
+    #ring_0 {
+        animation: spin 250s linear infinite reverse;
+    }
+    #ring_1 {
+        animation: spin 240s linear infinite;
+    }
+    #ring_2 {
+        animation: spin 230s linear infinite reverse;
+    }
+
+    #ring_3 {
+        animation: spin 220s linear infinite;
+    }
+
+    #ring_4 {
+        animation: spin 210s linear infinite reverse;
+    }
+
+    #ring_5 {
+        animation: spin 200s linear infinite;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

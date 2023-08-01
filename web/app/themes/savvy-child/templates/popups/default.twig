@@ -1,0 +1,52 @@
+{# WN Ready #}
+
+{% extends "popups/base.twig" %}
+
+{% block content %}
+    <div class="grid grid-cols-2 bg-[#f8f8f8] md:pb-9 md:grid-cols-1">
+        <div class="flex flex-col justify-center px-5 py-20 md:w-full md:py-10">
+            <span class="font-inter block text-center text-base font-300 text-dark-600 mb-1.5">{{ popup_content.pre_title }}</span>
+            <span class="block font-mulish text-primary-700 text-center text-h2 font-bold mb-1.5">{{ popup_content.title }}</span>
+            <span class="block w-full py-2 bg-blue-150 text-blue-800 rounded-lg font-inter text-sm font-medium text-center mb-4">{{ popup_content.banner }}</span> 
+            <ul class="flex flex-col gap-1 mb-5">
+                {% for item in popup_content.items %}
+                    <li class="text-sm text-left before:hidden ml-0">{% include 'partials/icons.twig' with { icon : 'sc-icon_checked', class : 'inline w-5 h-5 mr-2 fill-secondary-200 align-text-bottom' } %}{{ item.item }}</li>
+                {% endfor %}
+            </ul>
+            {# <div class="ps-popup_btn_close">
+                {% include 'partials/button.twig' with { 
+                    text: popup_content.btn_text,
+                    full_width: true,
+                    href: popup_content.btn_url,
+                    icon: 'sc-angle-right',
+                    size: 'smedium',
+                    nofollow: true,
+                    newtab: true,     
+                    align: 'center',
+                    theme: 'orange',
+                } %}
+            </div> #}
+            <span class="block text-xf text-dark-600 font-light font-inter mt-3 text-center mb-4">{{ popup_content.cta_disclosure }}</span>
+            <button class="ps-popup_btn_close block cursor-pointer mx-auto text-xs text-center text-dark-600 font-light hover:text-primary-700">No Thanks</button>
+        </div>
+        <a class="ps-popup_btn_close md:hidden" href="{{popup_content.btn_url}}" rel="nofollow noopener noreferrer" data-tracked="yes" target="_blank">
+            <img alt="NordVPN Promotion" class="block h-full w-full object-cover" src="{{ popup_content.image.url ?: '/app/themes/savvychild-child/assets/images/ps-popup-nordvpn.png' }}">
+        </a>
+
+        {# Bottom Decoration SVG #}
+        <svg class="absolute z-20 left-0 -bottom-8 w-full h-auto md:bottom-0" width="1009" height="103" viewBox="0 0 1009 103" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.06172 21.492C-0.455645 21.6459 -0.248383 21.775 1.06172 21.1458V21.492C5.56269 21.0357 25.2385 20.3614 76.318 38.6147C152.974 66.0077 148.136 1.6225 223.068 21.1458C282.587 36.6533 338.103 19.1494 378.418 38.6147C418.734 58.08 517.105 43.6057 573.547 21.1458C629.99 -1.3141 699.871 3.67697 739.649 21.1458C779.427 38.6147 856.834 43.6057 878.336 21.1458C899.837 -1.31404 1017.88 -29.8213 1001.43 103H1.06172V21.492Z" fill="url(#paint0_linear_3325_17109)"/>
+            <path d="M1007.94 19.492C1009.46 19.6459 1009.25 19.775 1007.94 19.1458V19.492C1003.44 19.0357 983.761 18.3614 932.682 36.6147C856.026 64.0077 860.864 -0.377503 785.932 19.1458C726.413 34.6533 670.897 17.1494 630.582 36.6147C590.266 56.08 491.895 41.6057 435.453 19.1458C379.01 -3.3141 309.129 1.67697 269.351 19.1458C229.573 36.6147 152.166 41.6057 130.664 19.1458C109.163 -3.31404 -8.88428 -31.8213 7.56659 101H1007.94V19.492Z" fill="url(#paint1_linear_3325_17109)"/>
+            <defs>
+            <linearGradient id="paint0_linear_3325_17109" x1="500.603" y1="6.11449" x2="500.603" y2="103" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E25D04" stop-opacity="0.08"/>
+            <stop offset="1" stop-color="#E25D04" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="paint1_linear_3325_17109" x1="508.397" y1="4.11449" x2="508.397" y2="101" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E25D04" stop-opacity="0.08"/>
+            <stop offset="1" stop-color="#E25D04" stop-opacity="0"/>
+            </linearGradient>
+            </defs>
+        </svg>
+    </div>  
+{% endblock %}

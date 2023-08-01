@@ -1,0 +1,15 @@
+vendor
+wp-content
+composer.lock
+node_modules
+vendor
+
+src/sass/temp
+
+performance/*
+!performance/.gitkeep
+!performance/reverse-cache
+performance/reverse-cache/*
+!performance/reverse-cache/.gitkeep
+
+!.gitkeep

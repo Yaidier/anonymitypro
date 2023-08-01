@@ -1,0 +1,37 @@
+{# WN Ready #}
+
+{% if heading %}
+    <h3 class="mb-14">{{heading}}</h3>
+{% endif %}
+
+<div class="relative overflow-hidden flex justify-between rounded-lg {{wrap_prop}}">
+    {% if show_icon_watermark %}
+        {% include 'partials/icons.twig' with { icon : 'ev-icon_fingerprint', class : 'absolute right-2 top-2 fill-primary-400 opacity-10 w-24 h-24' } %}
+    {% endif %}
+    <div class="w-[190px] flex justify-center flex-col pr-4 mr-8 border-solid border-r border-dark-300 md:mr-0 md:pr-0 md:border-none">
+        <img width="103px" height="103px" loading="lazy" class="w-full max-w-[103px] mx-auto object-contain rounded-full" src="{{ author.avatar }}" alt="{{ author.name }}" >
+        <div class="text-center mt-1.5">
+            {% if author.meta('twitter') %}
+                <a href="{{ author.meta('twitter') }}" target="_blank" class="group text-dark-500 mx-2 no-underline ">
+                    {% include 'partials/icons.twig' with { icon : 'ev-icon_twitter', class : 'inline-block fill-dark-500 w-4 h-4 group-hover:fill-primary-700' } %}
+                </a>
+            {% endif %}    
+            {% if author.meta('linkedin') %}
+                <a href="{{ author.meta('linkedin') }}" target="_blank" class="group text-dark-500 mx-2 no-underline ">
+                    {% include 'partials/icons.twig' with { icon : 'ev-icon_linkedin', class : 'inline-block fill-dark-500 w-4 h-4 group-hover:fill-primary-700' } %}
+                </a>
+            {% endif %}
+        </div>
+        <a class="group text-center no-underline" href="{{ author.link }}" >
+            <h4 class="mb-0 group-hover:text-primary-700">{{ author.name }}</h4>
+        </a>
+    </div>
+
+    <div class="w-full md:mt-3 ">
+        <p class="font-mulish text-xs text-dark-600 font-normal leading-7 mt-3 mb-2.5 ">{{ author.description | raw }} </p>
+        <a href="{{ author.link }}" class="group inline-flex justify-center items-center font-mulish text-xs text-primary_alt-400 font-normal no-underline hover:text-primary-700 ">More from {{author.first_name | raw}}
+            {% include 'partials/icons.twig' with {icon: 'ev-icon_angle_right', class: 'w-3.5 h-3.5 stroke-grey-800 '} %}
+        </a>
+    </div>
+</div>
+
