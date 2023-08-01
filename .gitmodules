@@ -1,3 +1,6 @@
 [submodule "web/app/themes/savvy"]
 	path = web/app/themes/savvy
 	url = git@github.com:wirenomads/savvy-theme.git
+[submodule "web/app/themes/savvy-child/app/SavvyBuilder"]
+	path = web/app/themes/savvy-child/app/SavvyBuilder
+	url = git@github.com:Yaidier/noder.git
