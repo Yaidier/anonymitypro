@@ -11,11 +11,8 @@ use ScTheme\Blocks\NewsCardsBlock;
 use ScTheme\Blocks\ArticlesCardsBlock;
 use ScTheme\Blocks\VpnOverviewBlock;
 use ScTheme\Blocks\VpnProvidersBlock;
-use ScTheme\Blocks\BannerFooterBlock;
-use ScTheme\Blocks\BeEncryptedPopupBlock;
-
-
-
+use ScTheme\Blocks\FooterBlock;
+use ScTheme\Blocks\PopupBlock;
 
 /**
  * The Blocks Controller Class
@@ -40,9 +37,8 @@ class BlocksController {
         self::add_block( new ArticlesCardsBlock() );
         self::add_block( new VpnOverviewBlock() );
         self::add_block( new VpnProvidersBlock() );
-        self::add_block( new BannerFooterBlock() );
-        self::add_block( new BeEncryptedPopupBlock() );
-        
+        self::add_block( new FooterBlock() );
+        self::add_block( new PopupBlock() );
     }
 
     public static function add_hooks(){

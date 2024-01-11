@@ -81,5 +81,11 @@
     "test": [
       "phpcs"
     ]
+  },
+  "autoload": {
+    "psr-4": {
+      "SavvyTheme\\": "./web/app/themes/savvy/app",
+      "ScTheme\\": "./web/app/themes/savvy-child/app"
+    }
   }
 }

@@ -2,9 +2,9 @@
 
 namespace ScTheme\Blocks;
 
-class BannerFooterBlock extends AbstractBlock {
+class FooterBlock extends AbstractBlock {
     const block_name    = 'vv-bannerfooter';
-    const title         = 'VV Banner Footer';
+    const title         = 'VV Footer';
     const icon          = 'megaphone';
 
     public function afterRegister() {

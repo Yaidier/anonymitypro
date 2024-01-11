@@ -2,9 +2,9 @@
 
 namespace ScTheme\Blocks;
 
-class BeEncryptedPopupBlock extends AbstractBlock {
-    const block_name    = 'vv-beencryptedpopup';
-    const title         = 'VV BeEncrypted Popup';
+class PopupBlock extends AbstractBlock {
+    const block_name    = 'vv-popup';
+    const title         = 'VV Popup';
     const icon          = 'megaphone';
 
     public function afterRegister() {
@@ -14,8 +14,8 @@ class BeEncryptedPopupBlock extends AbstractBlock {
 
     public function registerFields() {
         acf_add_local_field_group([
-            'key'       => 'vv_block_beencryptedpopup_field_group',
-            'title'     => 'beencryptedpopup',
+            'key'       => 'vv_block_popup_field_group',
+            'title'     => 'Popup',
             'fields'    => [
                 [
                     'key'       => 'vv_block_' . self::block_name . '_label',
