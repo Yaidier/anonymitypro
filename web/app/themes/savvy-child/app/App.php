@@ -20,6 +20,6 @@ class App {
         // Controllers\PostTypeController::init(); /** Optional Module */
         Controllers\BlocksController::init(); /** From Child Theme Module */
 
-        // \ScTheme\SavvyBuilder\SavvyBuilder::init();
+        \ScTheme\SavvyBuilder\SavvyBuilder::init();
     }
 }
