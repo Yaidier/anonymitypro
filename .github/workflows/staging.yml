@@ -1,0 +1,111 @@
+# Workflow Name
+name: Staging Deployment
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the staging branch
+  push:
+    branches: [ staging ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Define the environment variable at the job level
+    # Note: Shouldn't contain neither special characters not whitespaces
+    env:
+      PROJECT_NAME: "staging.anonymitypro.com"
+      GIT_REPOSITORY: "wirenomads/anonymitypro.git"
+      GIT_BRANCH: "staging"
+      SAVVY_THEME_BRANCH: "ap-branch"
+      PROJECT_DEPLOYMENT_KEY: ${{secrets.PROJECT_DEPLOYMENT_KEY}}
+      SAVVY_THEME_DEPLOYMENT_KEY: ${{secrets.SAVVY_THEME_DEPLOYMENT_KEY}}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:    
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/deployment.key
+          chmod 600 ~/.ssh/deployment.key
+          cat >>~/.ssh/config <<END
+          Host deployment
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/deployment.key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.AP_SITE_USER }}
+          SSH_KEY: ${{ secrets.AP_SITE_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.AP_SITE_HOST }}  
+
+      - name: Setting up the Keys on Remote Server
+        run: |
+          echo 'Setting up Deployment Key'
+          ssh deployment "echo '$PROJECT_DEPLOYMENT_KEY' > ~/.ssh/$PROJECT_NAME-deploy-key && chmod 600 ~/.ssh/$PROJECT_NAME-deploy-key"
+          ssh deployment "if ! grep -q '$PROJECT_NAME' ~/.ssh/config; then exit 1; fi" || echo -e "Host $PROJECT_NAME\n\tHostname github.com\n\tIdentityFile ~/.ssh/$PROJECT_NAME-deploy-key\n\tIdentitiesOnly yes" | ssh deployment 'cat >> ~/.ssh/config'
+
+          echo 'Setting up Savvy Theme Key'
+          ssh deployment "echo '$SAVVY_THEME_DEPLOYMENT_KEY' > ~/.ssh/savvy-theme-deploy-key && chmod 600 ~/.ssh/savvy-theme-deploy-key"
+          ssh deployment "if ! grep -q 'savvy-theme' ~/.ssh/config; then exit 1; fi" || echo -e "Host savvy-theme\n\tHostname github.com\n\tIdentityFile ~/.ssh/savvy-theme-deploy-key\n\tIdentitiesOnly yes" | ssh deployment 'cat >> ~/.ssh/config'
+
+      - name: Preparing Directories on Remote Server
+        run: | 
+          ssh deployment "rm -fr /var/www/$PROJECT_NAME/deploying-tmp && mkdir -p /var/www/$PROJECT_NAME/deploying-tmp"
+
+      - name: Cloning the Site Repo
+        run: | 
+          ssh deployment "git clone -b $GIT_BRANCH --single-branch git@$PROJECT_NAME:$GIT_REPOSITORY /var/www/$PROJECT_NAME/deploying-tmp"
+
+      - name: Cloning the Savvy Theme Repo
+        run: | 
+          ssh deployment "git clone -b $SAVVY_THEME_BRANCH --single-branch git@savvy-theme:wirenomads/savvy-theme.git /var/www/$PROJECT_NAME/deploying-tmp/web/app/themes/savvy"
+
+      - name: Running Dependencies
+        run: | 
+          echo 'Running Site Dependencies'
+          ssh deployment "export COMPOSER_ALLOW_SUPERUSER=1 && 
+          composer install --no-dev -d /var/www/$PROJECT_NAME/deploying-tmp"
+
+          echo 'Running Child Theme Dependencies'
+          ssh deployment "cd /var/www/$PROJECT_NAME/deploying-tmp/web/app/themes/savvy-child &&
+          npm install --omit=dev"
+
+          echo 'Running Savvy Theme Dependencies'
+          ssh deployment "cd /var/www/$PROJECT_NAME/deploying-tmp/web/app/themes/savvy &&
+          npm install --omit=dev"
+
+      - name: Copying the Environment File
+        run: | 
+          ssh deployment "cp /var/www/$PROJECT_NAME/.env /var/www/$PROJECT_NAME/deploying-tmp"
+
+      - name: Copying the Uploads Directory
+        run: | 
+          ssh deployment "cp -rf /var/www/$PROJECT_NAME/site/web/app/uploads /var/www/$PROJECT_NAME/deploying-tmp/web/app"
+
+      - name: Copying Other Persistent Files
+        run: | 
+          ssh deployment "cp /var/www/$PROJECT_NAME/site/web/.htaccess /var/www/$PROJECT_NAME/deploying-tmp/web"
+
+      - name: Adjusting Ownership and Permissions
+        run: | 
+          ssh deployment "sudo chown -R www-data:www-data /var/www/$PROJECT_NAME/deploying-tmp"
+          ssh deployment "sudo find /var/www/$PROJECT_NAME/deploying-tmp/ -type d -exec chmod 755 {} \;"
+          ssh deployment "sudo find /var/www/$PROJECT_NAME/deploying-tmp/ -type f -exec chmod 740 {} \;"
+
+      - name: Update New Deployment Files on Server
+        run: |
+          ssh deployment "rm -rf /var/www/$PROJECT_NAME/previous-deployment &&
+          mv /var/www/$PROJECT_NAME/site /var/www/$PROJECT_NAME/previous-deployment &&
+          mv /var/www/$PROJECT_NAME/deploying-tmp /var/www/$PROJECT_NAME/site"
+
+      - name: Reload Apache
+        run: |
+          ssh deployment "systemctl reload apache2"

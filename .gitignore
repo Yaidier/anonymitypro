@@ -41,6 +41,7 @@ ps-sta-bedrock.sql
 web/app/db.php
 web/app/updraft/
 *.sql
+uploads.zip
 
 # Cache
 web/app/cache/data
