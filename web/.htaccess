@@ -1,15 +1,15 @@
-# BEGIN LSCACHE
-# END LSCACHE
-# BEGIN NON_LSCACHE
-# END NON_LSCACHE
-Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    Header set Content-Security-Policy "script-src 'self' https://www.gstatic.com https://www.google.com https://www.googletagmanager.com 'unsafe-inline'; object-src 'none';"
+    Header set Content-Security-Policy "frame-ancestors 'self'"
+    Header always append X-Frame-Options SAMEORIGIN
+    Header always set Referrer-Policy "same-origin"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Content-Type-Options "nosniff"
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
 
-#<IfModule mod_headers.c>
-#    Header set Content-Security-Policy "default-src 'self'; script-src 'self';"
-#</IfModule>
-
-Header set X-Frame-Options "ALLOW-FROM URL"
-Header always set Referrer-Policy "same-origin"
+Options -Indexes
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
@@ -22,25 +22,6 @@ Header always set Referrer-Policy "same-origin"
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteRule ^wp-content/uploads/(.*)$ /app/uploads/$1 [R=301,NC,L]
-</IfModule>
-
-# Serves cache file if it exists
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-
-    RewriteBase /
-    # #If you serve pages from behind a proxy you may want to change 'RewriteCond %{HTTPS} on' to something more sensible
-    AddDefaultCharset UTF-8
-    RewriteCond %{REQUEST_URI} !^.*[^/]$
-    RewriteCond %{REQUEST_URI} !^.*//.*$
-    RewriteCond %{REQUEST_METHOD} !POST
-    RewriteCond %{QUERY_STRING} ^$
-    RewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$
-    RewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\"]+ [NC]
-    RewriteCond %{HTTP:Profile} !^[a-z0-9\"]+ [NC]
-    RewriteCond %{DOCUMENT_ROOT}/app/cache/rock.md -f
-    RewriteCond %{DOCUMENT_ROOT}/app/cache/data/$0/index.html -f
-    RewriteRule .* app/cache/data/$0/index.html [L]
 </IfModule>
 
 # BEGIN WordPress
