@@ -1,3 +1,147 @@
 /**
 * Post Content
 */
+
+.ev-post_content {
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: $dark_700;
+        margin-top: 0.6em;
+        margin-bottom: 0.3em;
+
+        /** 
+         * Pseudo element for the only puporse of creating a 
+         * offset for the #links that navigates to the sections.
+         */
+        &::before {
+            content: "";
+            display: block;
+            height: 90px;
+            margin-top: -90px;
+            visibility: hidden;
+            pointer-events: none;
+        }
+    }
+
+    p {
+        margin-bottom: 1.66em;
+    }
+
+    .wp-block-image {
+        margin-bottom: 25px;
+
+        img {
+            border-radius: 15px;
+        }
+    }
+}
+
+.savvy-table_of_contents {   
+    &.active {
+        .savvy-table_of_contents_content {
+            overflow: visible;
+            max-height: 100vh;
+            transition: 0.4s ease;
+            
+            @media screen and (max-width: 1200px) {
+                max-height: 0vh;
+            }
+        }
+        
+        .savvy-icon_chevrondown {
+            transition: 0.4s ease;
+            transform: rotate(180deg);
+        }
+    }
+
+    &.active_mobile {
+        .savvy-table_of_contents_content {
+            overflow: visible;
+            max-height: 100vh;
+            transition: 0.4s ease;
+        }
+
+        .savvy-icon_bars {
+            display: none;
+        }
+
+        .savvy-icon_cancel {
+            display: block;
+        }
+
+        @media screen and (min-width: 1199px) {
+            .savvy-icon_bars,
+            .savvy-icon_cancel {
+                display: none;
+            }
+        }
+    }
+
+    nav > ol > li.savvy-toc_heading__active {
+        > a {
+            font-weight: 700;
+            color: black;
+
+            > span {
+                color: $primary_700;
+            }
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            display: block;
+            bottom: -2px;
+            left: 0px;
+            width: var(--savvy_toc_line_width);
+            height: 2px;
+            background-color: $primary_700;
+        }
+
+        > div > ol > li.savvy-toc_heading__active > a > span {
+            color: $primary_700;
+        }
+    }
+
+    .savvy-toc_heading__active {
+        @media screen and (min-width: 1109px) {
+            > div {
+                max-height: 1200vh;
+            }
+    
+            > label {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    nav > ol > li li.savvy-toc_heading__active {
+        > a {
+            font-weight: 700;
+            color: black;
+        }
+    }
+}
+
+.ps-featured_block {
+    transition: 0.4s ease;
+
+    &_content {
+        transition: 0.4s ease;
+    }
+
+    &.ps-featured_block__active {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.4s ease;
+    
+        .ps-featured_block_content {
+            transform: translateY(0);
+            transition: 0.4s ease;
+            opacity: 1;
+        }
+    }
+}

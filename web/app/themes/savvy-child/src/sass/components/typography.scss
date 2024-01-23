@@ -4,15 +4,15 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--font_msr);
+    font-family: $roboto;
 }
 
 p {
-    font-family: var(--font_msr);
+    font-family: $opensans;
     font-size:  $font_size_17;
-    line-height: $line_height_18;
+    line-height: $line_height_17;
     font-weight: 300;
-    color: $dark_600;
+    color: $dark_700;
 
     @media only screen and (max-width: 767px) {
         font-size: $font_size_16;
@@ -21,8 +21,7 @@ p {
         font-size: $font_size_14;
     }
 }
-
-
+ 
 strong,
 b {
     font-weight: 600;
@@ -30,71 +29,46 @@ b {
 
 a {
     position: relative;
-    color: $secondary_200;
+    color: $secondary_700;
     cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 h1 {
     font-size: $font_size_50;
-    font-weight: 700;
-    line-height: $line_height_60;
-    color: $dark_800;
-
-
-    @media only screen and (max-width: 1024px) {
-        font-size: $font_size_32;
-    }
-
-    @media only screen and (max-width: 767px) {
-        font-size: $font_size_24;
-    }
-    @media only screen and (max-width: 639px) {
-        font-size: $font_size_24;
-    }
+    font-weight: 600;
+    line-height: $line_height_50;
 }
 
 h2 {
     font-size: $font_size_40;
     font-weight: 700;
     line-height: $line_height_40;
-    color: $dark_800;
-
-    @media only screen and (max-width: 767px) {
-        font-size: $font_size_32;
-    }
-    @media only screen and (max-width: 639px) {
-        font-size: $font_size_24;
-    }
+    color: $primary_700;
 }
 
 h3 {
-    font-size: $font_size_40;
+    font-size: $font_size_36;
+    font-weight: 700;
+    line-height: $line_height_36;
+    color: $primary_700;
+}
+
+h4 {
+    font-size: $font_size_32;
     font-weight: 700;
     line-height: $line_height_32;
-    color: $dark_700;
-
-    @media only screen and (max-width: 767px) {
-        font-size: $font_size_24;
-    }
-
-    @media only screen and (max-width: 639px) {
-        font-size: $font_size_18;
-    }
+    color: $primary_700;
 }
 
 h5 {
     font-size: $font_size_19;
     font-weight: 600;
     line-height: $line_height_32;
-    color: $dark_800;
-
-    @media only screen and (max-width: 767px) {
-        font-size: $font_size_24;
-    }
-
-    @media only screen and (max-width: 639px) {
-        font-size: $font_size_18;
-    }
+    color: $dark_700;
 }
 
 figcaption {
@@ -109,7 +83,7 @@ ol {
         font-family: var(--font_msr);
         font-size: $font_size_18;
         font-weight: 300;
-        line-height: $line_height_60;
+        line-height: $line_height_50;
         // color: $grey_700;
         @media only screen and (max-width: 767px) {
             font-size: $font_size_16;
@@ -125,7 +99,7 @@ li {
     font-family: var(--font_msr);
     font-size: $font_size_18;
     font-weight: 300;
-    line-height: $line_height_60;
+    line-height: $line_height_50;
     // color: $grey_700;
     @media only screen and (max-width: 767px) {
         font-size: $font_size_16;

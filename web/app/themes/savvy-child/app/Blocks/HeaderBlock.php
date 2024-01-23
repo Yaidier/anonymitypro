@@ -9,7 +9,7 @@ class HeaderBlock extends AbstractBlock {
 
     public function afterRegister() {
         $this->registerFields();
-        add_filter('vv_block_render_context__' . self::block_name, [$this, 'modifyContext']);
+        add_filter( 'vv_block_render_context__' . self::block_name, [$this, 'modifyContext'] );
     }
 
     public function registerFields() {
@@ -22,14 +22,14 @@ class HeaderBlock extends AbstractBlock {
                     'label'     => self::title,
                 ],
                 [
-                    'key'       => 'vv_block_header_title',
+                    'key'       => self::block_name . '_title',
                     'name'      => 'title',
                     'label'     => 'Title',
                     'type'      => 'text',
                     'default_value' => 'Title',
                 ],
                 [
-                    'key'       => 'vv_block_header_intro',
+                    'key'       => self::block_name . '_intro',
                     'name'      => 'intro',
                     'label'     => 'Intro',
                     'type'      => 'wysiwyg',
@@ -37,51 +37,14 @@ class HeaderBlock extends AbstractBlock {
                     'toolbar'   => 'full',
                 ],
                 [
-                    'key'       => 'vv_block_header_img',
-                    'name'      => 'image',
-                    'label'     => 'Image',
-                    'type'      => 'image',
-                    'default_value' => '',
-                ],
-                [
-                    'key'       => 'vv_block_header_style',
-                    'name'      => 'style',
-                    'label'     => 'Style Hero image',
-                    'type'      => 'true_false',
-                    'ui'        => 1,
-                    'default_value' => '0',
-                    'ui' => 1,
-                ],
-                [
-                    'key'       => 'vv_block_header_img_position',
-                    'name'      => 'img_position',
-                    'label'     => 'Image Position',
-                    'type'      => 'select',
-                    'choices'   => [
-                      'justify-start' => 'Left',
-                      'justify-center' => 'Center',
-                      'justify-end' => 'Right',
-                        
-                    ],
-                    'default_value' => 'justify-center',
-                    'conditional_logic' => [
-                        [
-                            'field' => 'ev_block_header_style',
-                            'operator' => '==',
-                            'value' => '1',
-                        ],
-                    ],
-                ],
-                [
-                    'key'       => 'ev_block_header_btn_name',
+                    'key'       => self::block_name . '_btn_name',
                     'name'      => 'btn_name',
                     'label'     => 'Button Name',
                     'type'      => 'text',
                     'default_value' => 'Try our VPN comparison tool',
-                   
                 ],
                 [ 
-                    'key'       => 'ev_block_header_btn_link',
+                    'key'       => self::block_name . '_btn_link',
                     'name'      => 'btn_link',
                     'label'     => 'Button Link',
                     'type'      => 'url',
@@ -101,7 +64,7 @@ class HeaderBlock extends AbstractBlock {
         ]);
     }
 
-    public function modifyContext($context) {
+    public function modifyContext( $context ) {
         $context['icon_type'] = $context['fields']['theme'] ?? '';
 
         return $context;

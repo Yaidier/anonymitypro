@@ -2,6 +2,8 @@
 
 namespace ScTheme\Blocks;
 
+use Timber\Post;
+
 class NewsCardsBlock extends AbstractBlock {
     const block_name    = 'vv-newscards';
     const title         = 'VV News Cards';
@@ -9,106 +11,80 @@ class NewsCardsBlock extends AbstractBlock {
 
     public function afterRegister() {
         $this->registerFields();
-        add_filter('vv_block_render_context__' . self::block_name, [$this, 'modifyContext']);
+        add_filter( 'vv_block_render_context__' . self::block_name, [$this, 'modifyContext'] );
     }
 
     public function registerFields() {
         acf_add_local_field_group([
-            'key'       => 'vv_block_newscards_field_group',
+            'key'       => self::block_name . '_field_group',
             'title'     => 'News Cards',
             'fields'    => [
                 [
-                    'key'       => 'vv_block_' . self::block_name . '_label',
+                    'key'       => self::block_name . '_label',
                     'name'      => 'label',
                     'label'     => 'News Cards',
                 ],
                 [
-                    'key'       => 'vv_block_newscards_title',
+                    'key'       => self::block_name . '_title',
                     'name'      => 'title',
                     'label'     => 'Title',
                     'type'      => 'text',
                     'default_value' => 'Title',
                 ],
                 [
-                    'key'       => 'vv_block_header_show_cta_btn',
-                    'name'      => 'show_cta_btn',
-                    'label'     => 'Show Cta Button',
+                    'key'       => self::block_name . '_show_btn',
+                    'name'      => 'show_btn',
+                    'label'     => 'Show Button',
                     'type'      => 'true_false',
                     'ui'        => 1,
                     'default_value' => '1',
                 ],
                 [
-                    'key'       => 'vv_block_newscards_btn_text',
+                    'key'       => self::block_name . '_btn_text',
                     'name'      => 'btn_text',
                     'label'     => 'Button Text',
                     'type'      => 'text',
-                    'default_value' => 'Read More News',
+                    'default_value'     => 'Read More News',
                     'conditional_logic' => [
-                        'field' => 'vv_block_header_show_cta_btn',
-                        'operator' => '==',
-                        'value' => '1',
+                        [
+                            'field'     => self::block_name . '_show_btn',
+                            'operator'  => '==',
+                            'value'     => '1',
+                        ]
                     ]
                 ],
                 [
-                    'key'       => 'vv_block_newscards_btn_link',
+                    'key'       => self::block_name . '_btn_link',
                     'name'      => 'btn_link',
                     'label'     => 'Button Link',
                     'type'      => 'url',
-                    'default_value' => '',
+                    'default_value'     => '',
                     'conditional_logic' => [
                         [
-                            'field' => 'vv_block_newscards_btn_text',
-                            'operator' => '==',
-                            'value' => '1',
-                        ],
+                            'field'     => self::block_name . '_show_btn',
+                            'operator'  => '==',
+                            'value'     => '1',
+                        ]
                     ]
                 ],
                 [
-                    'key'       => 'vv_block_newscards_items',
-                    'name'      => 'items',
-                    'label'     => 'Items',
-                    'type'      => 'repeater',
+                    'key'       => self::block_name . '_posts',
+                    'name'      => 'posts',
+                    'label'     => 'Posts',
+                    'type'      => 'post_object',
+                    'multiple'  => 1,
                     'layout'    => 'block',
-                    'sub_fields' => [
-
-                        [
-                            'key' => 'vv_block_newscards_item_img',
-                            'name' => 'image',
-                            'label' => 'Image',
-                            'type' => 'image',
-                        ],
-                        [
-                            'key' => 'vv_block_newscards_item_text',
-                            'name' => 'text',
-                            'label' => 'Text',
-                            'type' => 'text',
-                        ],
-                        [
-                            'key' => 'vv_block_newscards_item_date',
-                            'name' => 'date',
-                            'label' => 'Date',
-                            'type' => 'text',
-                        ],     
-                    ]
+                    'return_format' => 'id',
                 ],
                 [
-                    'key'       => 'vv_block_newscards_show_arrow_icon',
-                    'name'      => 'show_arrow_icon',
-                    'label'     => 'Show Arrow Icon',
-                    'type'      => 'true_false',
-                    'ui'        => 1,
-                    'default_value' => true,
-                ],
-                [
-                    'key'       => 'vv_block_newscards_columns',
-                    'name'      => 'vv_columns',
-                    'label'     => 'Number of columns',
+                    'key'       => self::block_name . '_columns',
+                    'name'      => 'columns',
+                    'label'     => 'Columns Number',
                     'type'      => 'number',
                     'min'       => 1,
                     'max'       => 4,
                     'default_value' => 4,
                 ],
-               
             ],
             'location' => [
                 [
@@ -122,8 +98,19 @@ class NewsCardsBlock extends AbstractBlock {
         ]);
     }
 
-    public function modifyContext($context) {
-        $context['icon_type'] = $context['fields']['theme'] ?? '';
+    public function modifyContext( $context ) {
+        /**
+         * Get the post IDs from the context.
+         */
+        $post_ids = $context['fields']['posts'] ?? [];
+
+        if( empty( $post_ids ) ) {
+            return $context;
+        }
+
+        $context['fields']['posts'] = array_map( function ( $post_id ) {
+            return new Post( $post_id );
+        }, $post_ids);
 
         return $context;
     }

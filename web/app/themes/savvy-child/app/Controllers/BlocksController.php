@@ -9,7 +9,7 @@ use ScTheme\Blocks\ButtonBlock;
 use ScTheme\Blocks\HeaderBlock;
 use ScTheme\Blocks\NewsCardsBlock;
 use ScTheme\Blocks\ArticlesCardsBlock;
-use ScTheme\Blocks\VpnOverviewBlock;
+use ScTheme\Blocks\TeamBlock;
 use ScTheme\Blocks\VpnProvidersBlock;
 use ScTheme\Blocks\FooterBlock;
 use ScTheme\Blocks\PopupBlock;
@@ -35,7 +35,7 @@ class BlocksController {
         self::add_block( new HeaderBlock() );
         self::add_block( new NewsCardsBlock() );
         self::add_block( new ArticlesCardsBlock() );
-        self::add_block( new VpnOverviewBlock() );
+        self::add_block( new TeamBlock() );
         self::add_block( new VpnProvidersBlock() );
         self::add_block( new FooterBlock() );
         self::add_block( new PopupBlock() );

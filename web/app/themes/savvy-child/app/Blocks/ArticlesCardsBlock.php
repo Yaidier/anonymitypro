@@ -2,6 +2,8 @@
 
 namespace ScTheme\Blocks;
 
+use Timber\Post;
+
 class ArticlesCardsBlock extends AbstractBlock {
     const block_name    = 'vv-articlescards';
     const title         = 'VV Articles Cards';
@@ -9,61 +11,35 @@ class ArticlesCardsBlock extends AbstractBlock {
 
     public function afterRegister() {
         $this->registerFields();
-        add_filter('vv_block_render_context__' . self::block_name, [$this, 'modifyContext']);
+        add_filter( 'vv_block_render_context__' . self::block_name, [$this, 'modifyContext'] );
     }
 
     public function registerFields() {
         acf_add_local_field_group([
-            'key'       => 'vv_block_articlescards_field_group',
+            'key'       => self::block_name . '_field_group',
             'title'     => 'Articles Cards',
             'fields'    => [
                 [
-                    'key'       => 'vv_block_' . self::block_name . '_label',
+                    'key'       => self::block_name . '_label',
                     'name'      => 'label',
                     'label'     => 'Articles Cards',
                 ],
                 [
-                    'key'       => 'vv_block_articlescards_title',
+                    'key'       => self::block_name . '_title',
                     'name'      => 'title',
                     'label'     => 'Title',
                     'type'      => 'text',
                     'default_value' => 'Title',
                 ],
                 [
-                    'key'       => 'vv_block_articlescards_items',
-                    'name'      => 'items',
-                    'label'     => 'Items',
-                    'type'      => 'repeater',
+                    'key'       => self::block_name . '_posts',
+                    'name'      => 'posts',
+                    'label'     => 'Posts',
+                    'type'      => 'post_object',
+                    'multiple'  => 1,
                     'layout'    => 'block',
-                    'sub_fields' => [
-
-                        [
-                            'key' => 'vv_block_articlescards_item_img',
-                            'name' => 'image',
-                            'label' => 'Image',
-                            'type' => 'image',
-                        ],
-                        [
-                            'key' => 'vv_block_articlescards_item_text',
-                            'name' => 'text',
-                            'label' => 'Text',
-                            'type' => 'text',
-                        ],
-                        [
-                            'key' => 'vv_block_articlescards_item_description',
-                            'name' => 'description',
-                            'label' => 'Description',
-                            'type' => 'text',
-                        ],
-                        [
-                            'key' => 'vv_block_articlescards_item_date',
-                            'name' => 'date',
-                            'label' => 'Date',
-                            'type' => 'text',
-                        ],   
-                    ]
+                    'return_format' => 'id',
                 ],
-               
             ],
             'location' => [
                 [
@@ -77,8 +53,19 @@ class ArticlesCardsBlock extends AbstractBlock {
         ]);
     }
 
-    public function modifyContext($context) {
-        $context['icon_type'] = $context['fields']['theme'] ?? '';
+    public function modifyContext( $context ) {
+        /**
+         * Get the post IDs from the context.
+         */
+        $post_ids = $context['fields']['posts'] ?? [];
+
+        if( empty( $post_ids ) ) {
+            return $context;
+        }
+
+        $context['fields']['posts'] = array_map( function ( $post_id ) {
+            return new Post( $post_id );
+        }, $post_ids);
 
         return $context;
     }

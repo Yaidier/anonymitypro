@@ -1,24 +1,16 @@
-
-
-<section class="vv-header relative bg-gradient-to-t from-primary-800 to-primary-700 pt-20">
-    <div class="container flex justify-between items-center md:flex-col md:justify-center">
-        <div class=" w-3/4 flex-col justify-start md:w-full md:mt-10 sm:w-full">
-            <h1 class="text-white md:text-center">{{ fields.title }}</h1>
-            {% if ( fields.intro ) %} 
-                <div class="vv-header_wysing leading-6 text-size_16 font-normal text-left mt-6 lg:pr-5 md:text-center">{{ fields.intro }}</div>
-            {% endif %}
-            <div class="flex flex-col w-fit md:w-full">
-                {% include 'partials/button.twig' with { 
-                    text: fields.btn_name,
-                    url: fields.btn_link,
-                    disclosure: fields.btn_disclosure,
-                    class: "mt-8",
-                    } only
-                %}
-            </div>
-        </div>
-        <div class="w-3/4 flex {{ fields.img_position }} items-center lg:w-full lg:mb-8 md:mt-5">
-            <img class="block w-full  h-auto" src="{{ fields.image.url }}">
-        </div>
+<section class="vv-header relative bg-home-hero bg-cover bg-center bg-no-repeat py-40 z-0">
+    <div class="absolute bg-[#02002fe3] left-0 top-0 w-full h-full -z-10"></div>
+    <div class="container">
+        <h1 class="text-white text-center">{{fields.title}}</h1>
+        {% if ( fields.intro ) %} 
+            <div class="vv-header_wysing mt-6">{{ fields.intro }}</div>
+        {% endif %}
+        {% include 'partials/button.twig' with { 
+            text: fields.btn_name,
+            url: fields.btn_link,
+            disclosure: fields.btn_disclosure,
+            class: "block w-fit mx-auto mt-8 text-center",
+            } only
+        %}
     </div>
-</section> 
+</section>

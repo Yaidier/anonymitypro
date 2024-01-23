@@ -3,65 +3,12 @@
 {% extends "layouts/base.twig" %}
 
 {% block content %}
+    {# Show subheader #}
+    {% include "partials/subheader.twig" with { title: term.name } %}
 
-
-
-<section class="se-relatedmovies bg-secondary-500 py-10 px-5">
-    {% for post in posts %}
-        <div class="container flex mt-5 gap-5 bg-secondary-700 p-5 rounded-md cursor-pointer border-2 border-transparent hover:duration-700 hover:transition hover:transform hover:border-2 hover:border-primary-700/50 hover:shadow-[0px_0px_8px_rgba(255,0,101,0.3)] md:flex-col">
-            <a href="{{post.link}}">
-                {# <img class="max-w-[289px] lg:max-w-full lg:w-full" src=""> #}
-                {{ function('get_the_post_thumbnail', post.id, 'medium', { 'class': ' max-w-[289px] h-auto  object-cover lg:max-w-full lg:w-full' }) }}
-            </a>
-            <div class="flex flex-col justify-start gap-3">
-                <a href="{{post.link}}">
-                    <p class="font-msr text-size_24 text-white text-left font-semibold cursor-pointer transition duration-300 hover:text-primary-700 hover:transition hover:duration-300">{{ post.title }}</p>
-                </a>
-                <p class="font-msr text-size_16s text-left text-secondary-50">{{post.post_excerpt}}</p>
-                <div class="flex justify-start items-center">
-                    <ul class="flex justify-center items-center">
-                        <li class=" flex justify-between">
-                            <a href="{{post.link}}" class="flex justify-center items-center text-size_15 text-white font-medium">
-                                {% include 'partials/icons.twig' with { icon: 'se-icon_user', class: 'fill-primary-700 w-4 h-4' } %}
-                                <a href="{{post.author.link}}" class="">
-                                    <span class="font-msr text-size_15 text-white font-medium text-left text-grey-300  pl-2 whitespace-nowrap transition duration-300 hover:text-primary-700 hover:transition hover:duration-300">{{post.author.name}} </span> 
-                                </a>  
-                            </a>
-                        </li>
-                        <li class="ml-7">
-                            <div class="flex justify-center items-center ">
-                                {% include 'partials/icons.twig' with { icon: 'se-icon_calendar', class: 'fill-primary-700 w-4 h-4' } %}
-                                <span class="font-msr text-size_15 text-white font-medium  text-left text-grey-300 pl-2 whitespace-nowrap">{{post.modified_date}}</span>   
-                            </div>
-                        </li>
-                    </ul>    
-                </div> 
-            </div>
-            <a href="{{post.link}}" class="hidden w-28 h-10 bg-gradient-to-l from-primary-600 to-primary-800 rounded-md cursor-pointer transition duration-700 hover:to-primary-600 hover:transition hover:duration-700 md:flex md:justify-center md:items-center">
-                <span class="text-white  text-size_16 text-center">Read More</span>
-            </a>         
-        </div> 
-    {% endfor %}   
-</section>
-
-
-
-
-    
-
-
-
-    {% for post in posts %}
-        {{ function('get_the_post_thumbnail', post.id, 'ps-post-featured', { 'class': 'h-60 w-full object-cover rounded-md' }) }}
-        {# {{post.author.link}} #}
-        {# {{post.author.name}} #}
-        {# {{post.modified_date}} #}
-        {# {{post.id}} #}
-        {# {{post.link}} #}
-        {# <p>{{post.title}}</p> #}
-        {# <p>{{post.post_excerpt}}</p> #}
-    {% endfor %}
-    <pre>
-        {# {{dump(posts)}} #}
-    </pre>
+    <section class="mt-20">
+        <div class="container">
+            {% include "partials/post-grid.twig" %}
+        </div>
+    </section>
 {% endblock %}

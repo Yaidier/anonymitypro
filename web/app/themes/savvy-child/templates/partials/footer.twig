@@ -1,106 +1,68 @@
-{# WN Ready #}
-
-
-
-<footer class="se-footer bg-primary-600 py-10">
-    <div class="container flex flex-col justify-center items-center mb-20 md:mb-8">
-        <div class="grid grid-cols-5 gap-40 lg:grid-cols-4 lg:gap-8 md:grid-cols-3 sm:grid-cols-2 sm:gap-12 sm:justify-center">
-            <div class="flex flex-col gap-6"> 
-                <p class="font-msr font-semibold text-dark-800 text-size_18 ">{{ footer_menu_1.name }}</p>
-                <nav itemscope="" itemtype="https://schema.org/SiteNavigationElement">
-                    <ul class="flex flex-col gap-6 md:gap-3">
-                        {% for list in footer_menu_1.get_items %}
-                            <li class="mt-2">
-                                <a href="#" class="text-dark-800 text-size_16 font-medium cursor-pointer transition duration-700 hover:text-decoration-2 hover:text-primary-700">{{list}}</a>
-                            </li>
-                        {% endfor %}    
-                    </ul>
-                </nav>
-            </div>
-            <div class="flex flex-col gap-6 md:hidden">
-                <p class="font-msr font-semibold text-dark-800 text-size_18 whitespace-nowrap">{{ footer_menu_2.name }}</p>
-                <nav itemscope="" itemtype="https://schema.org/SiteNavigationElement">
-                    <ul class=" flex flex-col gap-6  md:gap-3">
-                        {% for list in footer_menu_2.get_items %}
-                            <li class=" mt-2">
-                                <a href="#" class="text-dark-800 text-size_16 whitespace-nowrap font-medium cursor-pointer decoration-2 hover:text-primary-700 transition duration-300 hover:duration-300">{{list}}</a>    
-                            </li>
-                        {% endfor %}   
-                    </ul>
-                </nav>
-            </div>
-            <div class="flex flex-col gap-6 sm:hidden">
-                <p class="font-msr font-semibold text-dark-800 text-size_18">{{ footer_menu_3.name }}</p>
-                <nav itemscope="" itemtype="https://schema.org/SiteNavigationElement">
-                    <ul class="flex flex-col gap-6 md:gap-3">
-                    {% for list in footer_menu_3.get_items %}
-                        <li class="mt-2">
-                            <a href="#" class="text-dark-800 text-size_16 font-medium cursor-pointer hover:text-primary-700 transition duration-300 hover:duration-300">{{list}}</a>
-                        </li>
-                    {% endfor %}
-                    </ul>
-                </nav>
-            </div>
-            <div class="flex flex-col gap-6">
-                <p class="font-msr font-semibold text-dark-800 text-size_18 ">{{ footer_menu_4.name }}</p>
-                <nav itemscope="" itemtype="https://schema.org/SiteNavigationElement">
-                    <ul class="flex flex-col gap-6 md:gap-3">
-                    {% for list in footer_menu_4.get_items %}
-                        <li class="mt-2">
-                            <a href="#" class="text-dark-800 text-size_16 font-medium cursor-pointer hover:text-primary-700 transition duration-300 hover:duration-300">{{list}}</a>
-                        </li>
-                    {% endfor %}
-                    </ul>
-                </nav>
-            </div>
-            <div class="flex flex-col justify-start items-start gap-6">
-                <p class="font-msr font-semibold text-dark-800 text-size_18 text-left md:text-center">Language</p>
-                <ul class="">
-                    <li class="relative bg-white w-44 py-2 px-5 rounded-full border-2 border-dark-800">
-                        <div class="relative flex justify-start items-center  cursor-pointer">
-                            <img class="w-4 h-3" src="/app/uploads/2023/01/flag-en.webp">
-                            <span class="font-msr pl-2  text-dark-800 after:absolute after:w-4 after:h-3 after:top-1 after:right-0 after:bg-[url('/uploads/2023/01/down.png')]">English</span>
-                        </div>
-                        {% include 'partials/icons.twig' with { icon: 'vv-icon_chevron', class: 'absolute fill-primary-800 w-3 h-3 right-8 transform rotate-90 top-2/4 -translate-y-2/4' } %}   
-                    
-                        <ul class="hidden">
-                            <li>
-                                <a href="">
-                                    <img src="">
-                                    <span class="">Deutsch</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="flex justify-start items-center gap-3 mt-32 md:mt-3">
-                    <i class="relative group w-8 h-8 bg-dark-800 rounded-md p-3 cursor-pointer hover:bg-dark-800/75">
-                        {% include "partials/icons.twig" with { icon: "se-icon_facebook", class: "absolute w-3 h-auto fill-white top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4" } %}
-                    </i>
-                    <i class="relative group w-8 h-8 bg-dark-800 rounded-md p-3 cursor-pointer  hover:bg-dark-800/75">
-                        {% include "partials/icons.twig" with { icon: "se-icon_twitter", class: "absolute w-4 h-auto fill-white top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4" } %}
-                    </i>
-                    <i class="relative  group w-8 h-8 bg-dark-800 rounded-md p-3 cursor-pointer hover:bg-dark-800/75">
-                        {% include "partials/icons.twig" with { icon: "vv-icon_linkedin", class: "absolute w-4 h-auto fill-white top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4" } %}
-                    </i>
-                    <i class="relative group w-8 h-8 bg-dark-800 rounded-md p-3 cursor-pointer  hover:bg-dark-800/75">
-                        {% include "partials/icons.twig" with { icon: "vv-icon_instagram", class: "absolute w-4 h-auto fill-white top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4" } %}
-                    </i>
-                </div>
-            </div>   
+<footer class="vv-footer mt-20">
+    <div class=" bg-primary-800">
+        <div class="container flex flex-col justify-center item-center gap-5 py-16">
+            <h3 class="text-center text-white font-semibold">Looking for a VPN?</h3>
+            <p class="text-white text-size_18 font-normal text-center w-2/5 mr-auto ml-auto md:text-size_18 md:w-full">Take a look at our overview of the most trustworthy, fast, and safe VPN services. Extensively tested by our experts.</p>
+            {% include 'partials/button.twig' with { 
+                text: 'Find the Best VPN for you!',
+                url: '#',
+                class: "mx-auto w-fit mt-5",
+                } only
+            %}
         </div>
-        <div class="w-full flex justify-start items-start mt-5">
-            {% set logo_icon %}
-                {% include 'partials/icons.twig' with { icon : 'sc-icon_fingerprint', class : 'hidden absolute z-0 -top-1 -right-5 fill-primary-700 w-6 h-6 lg:block' } %}
-            {% endset %}
-            <a href="#" class="font-msr text-dark-800 text-center text-size_16 font-medium py-5 cursor-pointer">© 2014 - 2023 VPNoverview.com</a>
-        </div> 
-                 
     </div>
-    
+
+    <div class="container grid grid-cols-5 py-14 md:grid-cols-1 md:gap-10">
+        <div>
+            <img width="170px" height="38px" src="/app/themes/savvy-child/assets/svg/vv-logo-dark-2.svg" alt='VPNVerity Logo'>
+        </div>
+        <div class="flex flex-col gap-4"> 
+            <p class="font-roboto font-semibold text-dark-700 text-size_19">{{ footer_menu_1.name }}</p>
+            <nav itemscope="" itemtype="https://schema.org/SiteNavigationElement">
+                <ul class="flex flex-col md:gap-3">
+                    {% for list in footer_menu_1.get_items %}
+                        <li class="mt-5">
+                            <a href="#" class="text-secondary-700 text-size_16 font-medium cursor-pointer transition duration-700 hover:text-decoration-2 hover:text-primary-700">{{list}}</a>
+                        </li>
+                    {% endfor %}    
+                </ul>
+            </nav>
+        </div>
+        <div class="flex flex-col gap-4 md:hidden">
+            <p class="font-roboto font-semibold text-dark-700 text-size_18 whitespace-nowrap">{{ footer_menu_2.name }}</p>
+            <nav itemscope="" itemtype="https://schema.org/SiteNavigationElement">
+                <ul class="flex flex-col  md:gap-3">
+                    {% for list in footer_menu_2.get_items %}
+                        <li class="mt-5">
+                            <a href="#" class="text-secondary-700 text-size_16 whitespace-nowrap font-medium cursor-pointer decoration-2 hover:text-primary-700 transition duration-300 hover:duration-300">{{list}}</a>    
+                        </li>
+                    {% endfor %}   
+                </ul>
+            </nav>
+        </div>
+        <div class="flex flex-col gap-4 sm:hidden">
+            <p class="font-roboto font-semibold text-dark-700 text-size_18">{{ footer_menu_3.name }}</p>
+            <nav itemscope="" itemtype="https://schema.org/SiteNavigationElement">
+                <ul class="flex flex-col md:gap-3">
+                {% for list in footer_menu_3.get_items %}
+                    <li class="mt-5">
+                        <a href="#" class="text-secondary-700 text-size_16 font-medium cursor-pointer hover:text-primary-700 transition duration-300 hover:duration-300">{{list}}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </nav>
+        </div>
+        <div class="flex flex-col gap-4">
+            <p class="font-roboto font-semibold text-dark-700 text-size_18 ">{{ footer_menu_4.name }}</p>
+            <nav itemscope="" itemtype="https://schema.org/SiteNavigationElement">
+                <ul class="flex flex-col md:gap-3">
+                {% for list in footer_menu_4.get_items %}
+                    <li class="mt-5">
+                        <a href="#" class="text-secondary-700 text-size_16 font-medium cursor-pointer hover:text-primary-700 transition duration-300 hover:duration-300">{{list}}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
 </footer>
-
-
-            
-
-

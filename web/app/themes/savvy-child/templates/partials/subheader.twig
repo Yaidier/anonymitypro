@@ -1,0 +1,23 @@
+{% set show_author_and_date = show_author_and_date ?? false %}
+
+{% include "partials/breadcrumbs.twig" %}
+
+<section class="bg-primary-800 py-20">
+    <div class="container">
+        <h1 class="text-white">{{title}}</h1>
+        {% if show_author_and_date %}
+            <div class="flex justify-between mt-10">
+                <div class="flex justify-start items-center gap-3">
+                    <div class="p-1 border border-assent-700 rounded-full">
+                        <img width="40px" height="40px" loading="lazy" class="rounded-full" src="{{ post.author.avatar }}" alt="{{ post.author.name }}">
+                    </div>
+                    <a class="font-opensans text-size_19 font-light text-white no-underline capitalize group-hover:text-primary-700" href="{{ post.author.link }}">{{ post.author.name }}</a>
+                </div>
+                <div class="flex justify-start items-center">
+                    {% set published_date = __( post.date()|date('F'), 'savvy' ) ~ ' ' ~ post.date()|date('j, Y') %}
+                    <span class="block font-opensans text-white/80 text-size_16 font-light whitespace-nowrap">{{ __( 'Published', 'savvy' ) }}: {{ published_date }}</span>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>

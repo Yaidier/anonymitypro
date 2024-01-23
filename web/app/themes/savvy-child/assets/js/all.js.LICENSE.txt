@@ -1,0 +1,11 @@
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
+/**
+ * Sharer.js
+ * 
+ * @preserve
+ * @description Create your own social share buttons
+ * @version 0.5.1
+ * @author Ellison Leao <ellisonleao@gmail.com>
+ * @license MIT
+ */

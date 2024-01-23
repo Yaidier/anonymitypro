@@ -1,0 +1,9 @@
+{# WN Ready #}
+
+{% set style = style ? '_' ~ style : '' %}
+
+{% set home_icon %}
+    {% include "partials/icons.twig" with { icon: 'house', class: 'inline-block w-[14px] h-[14px] fill-secondary-200 align-baseline hover:fill-primary-700' } %}
+{% endset %}
+
+{{ function( 'yoast_breadcrumb', '<nav id="breadcrumbs" class="vv-breadcrumbs'~ style ~' lg:text-center">', '</nav>', false )|raw|replace({"[[Home]]": home_icon}) }}

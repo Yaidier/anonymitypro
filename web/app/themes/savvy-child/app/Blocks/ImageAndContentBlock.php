@@ -14,82 +14,54 @@ class ImageAndContentBlock extends AbstractBlock {
 
     public function registerFields() {
         acf_add_local_field_group([
-            'key'       => 'vv_block_imageandcontent_field_group',
+            'key'       => self::block_name . '_field_group',
             'title'     => 'Image And Content Settings',
             'fields'    => [
                 [
-                    'key'       => 'vv_block_' . self::block_name . '_label',
+                    'key'       => self::block_name . '_label',
                     'label'     => self::title,
                 ],
-               
                 [
-                    'key' => 'vv_block_imageandcontent_title',
-                    'name' => 'title',
-                    'label' => 'Title',
-                    'type' => 'text',
+                    'key'   => self::block_name . '_item_img',
+                    'name'  => 'image',
+                    'label' => 'Image',
+                    'type'  => 'image',
                 ],
                 [
-                    'key'       => 'vv_block_imageandcontent_items',
-                    'name'      => 'items',
-                    'label'     => 'Items',
-                    'type'      => 'repeater',
-                    'layout'    => 'block',
-                    'sub_fields' => [
-
-                        [
-                            'key' => 'vv_block_imageandcontent_item_img',
-                            'name' => 'image',
-                            'label' => 'Image',
-                            'type' => 'image',
-                        ],
-                        [
-                            'key' => 'vv_block_imageandcontent_item_name',
-                            'name' => 'name',
-                            'label' => 'Name',
-                            'type' => 'text',
-                        ],
-                        [
-                            'key' => 'vv_block_imageandcontent_item_intro',
-                            'name' => 'intro',
-                            'label' => 'Intro',
-                            'type'    => 'wysiwyg',
-                            'tabs'    => 'all',
-                            'toolbar' => 'full',
-                        ], 
-                        [
-                            'key'       => 'vv_block_imageandcontent_invert',
-                            'name'      => 'invert',
-                            'label'     => 'Inver Content',
-                            'type'      => 'true_false',
-                            'ui'        => 1,
-                        ],
-                        [
-                            'key'       => 'vv_block_imageandcontent_buttons',
-                            'name'      => 'buttons',
-                            'label'     => 'Items',
-                            'type'      => 'repeater',
-                            'layout'    => 'block',
-                            'sub_fields' => [
-                                [
-                                    'key'       => 'vv_block_imageandcontent_btn_name',
-                                    'name'      => 'btn_name',
-                                    'label'     => 'Button Name',
-                                    'type'      => 'text',
-                                    'default_value' => '',
-                                ],
-                                [
-                                    'key'       => 'vv_block_imageandcontent_btn_link',
-                                    'name'      => 'btn_link',
-                                    'label'     => 'Button Link',
-                                    'type'      => 'url',
-                                    'default_value' => '',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],   
-                
-                
+                    'key'   => self::block_name . '_item_title',
+                    'name'  => 'title',
+                    'label' => 'Title',
+                    'type'  => 'text',
+                ],
+                [
+                    'key'       => self::block_name . '_item_intro',
+                    'name'      => 'intro',
+                    'label'     => 'Intro',
+                    'type'      => 'wysiwyg',
+                    'tabs'      => 'all',
+                    'toolbar'   => 'full',
+                ], 
+                [
+                    'key'       => self::block_name . '_invert',
+                    'name'      => 'invert',
+                    'label'     => 'Invert Content',
+                    'type'      => 'true_false',
+                    'ui'        => 1,
+                ],
+                [
+                    'key'       => self::block_name . '_btn_name',
+                    'name'      => 'btn_name',
+                    'label'     => 'Button Name',
+                    'type'      => 'text',
+                    'default_value' => '',
+                ],
+                [
+                    'key'       => self::block_name . '_btn_link',
+                    'name'      => 'btn_link',
+                    'label'     => 'Button Link',
+                    'type'      => 'url',
+                    'default_value' => '',
+                ],
             ],
             'location' => [
                 [

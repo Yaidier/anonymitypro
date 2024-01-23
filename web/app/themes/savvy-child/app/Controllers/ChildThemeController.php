@@ -16,7 +16,24 @@ class ChildThemeController extends BaseController {
         self::set_theme_files_directories();
         self::load_media_in_backend();
         self::load_admin_scripts();
+        self::register_sidebars();
 	}
+
+    public static function register_sidebars() {
+        register_sidebar([
+            'name'          => 'Post Sidebar',
+            'id'            => 'savvy-post-sidebar',
+            'before_widget' => '<div class="savvy-post_sidebar">',
+            'after_widget'  => '</div>',
+        ]);
+
+        register_sidebar([
+            'name'          => 'Page Sidebar',
+            'id'            => 'savvy-page-sidebar',
+            'before_widget' => '<div class="savvy-page_sidebar">',
+            'after_widget'  => '</div>',
+        ]);
+    }
 
     public static function load_admin_scripts() {
         add_action( 'admin_footer', function() {

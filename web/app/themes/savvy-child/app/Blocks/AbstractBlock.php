@@ -34,7 +34,7 @@ abstract class AbstractBlock {
         $context['fields']      = get_fields();
         $context['is_preview']  = $is_preview;
 
-        $context = apply_filters( 'ps_block_render_context__' . static::block_name, $context );
+        $context = apply_filters( 'vv_block_render_context__' . static::block_name, $context );
 
         \Timber::render(
             'blocks/' . preg_replace('/^' . preg_quote('vv-', '/') . '/', '', static::block_name) . '.twig',

@@ -9,28 +9,28 @@ class VpnProvidersBlock extends AbstractBlock {
 
     public function afterRegister() {
         $this->registerFields();
-        add_filter('vv_block_render_context__' . self::block_name, [$this, 'modifyContext']);
+        add_filter( 'vv_block_render_context__' . self::block_name, [$this, 'modifyContext'] );
     }
 
     public function registerFields() {
         acf_add_local_field_group([
-            'key'       => 'vv_block_vpnproviders_field_group',
+            'key'       => self::block_name . '_field_group',
             'title'     => 'Vpn Providers',
             'fields'    => [
                 [
-                    'key'       => 'vv_block_' . self::block_name . '_label',
+                    'key'       => self::block_name . '_label',
                     'name'      => 'label',
                     'label'     => 'Vpn Providers',
                 ],
                 [
-                    'key'       => 'vv_block_vpnproviders_title',
+                    'key'       => self::block_name . '_title',
                     'name'      => 'title',
                     'label'     => 'Title',
                     'type'      => 'text',
                     'default_value' => 'Title',
                 ],
                 [
-                    'key'       => 'vv_block_vpnproviders_show_cta_btn',
+                    'key'       => self::block_name . '_show_btn',
                     'name'      => 'show_cta_btn',
                     'label'     => 'Show Cta Button',
                     'type'      => 'true_false',
@@ -38,70 +38,77 @@ class VpnProvidersBlock extends AbstractBlock {
                     'default_value' => '1',
                 ],
                 [
-                    'key'       => 'vv_block_vpnproviders_btn_text',
+                    'key'       => self::block_name . '_btn_text',
                     'name'      => 'btn_text',
                     'label'     => 'Button Text',
                     'type'      => 'text',
-                    'default_value' => 'Read More News',
+                    'default_value'     => 'Read More News',
                     'conditional_logic' => [
-                        'field' => 'vv_block_header_show_cta_btn',
-                        'operator' => '==',
-                        'value' => '1',
-                    ]
+                        [
+                            'field'     => self::block_name . '_show_btn',
+                            'operator'  => '==',
+                            'value'     => '1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ',
+                        ],
+                    ],
                 ],
                 [
-                    'key'       => 'vv_block_vpnproviders_btn_link',
+                    'key'       => self::block_name . '_btn_link',
                     'name'      => 'btn_link',
                     'label'     => 'Button Link',
                     'type'      => 'url',
                     'default_value' => '',
                     'conditional_logic' => [
                         [
-                            'field' => 'vv_block_vpnproviders_btn_text',
-                            'operator' => '==',
-                            'value' => '1',
+                            'field'     => self::block_name . '_show_btn',
+                            'operator'  => '==',
+                            'value'     => '1',
                         ],
-                    ]
+                    ],
                 ], 
                 [
-                    'key'       => 'vv_block_vpnproviders_items',
+                    'key'       => self::block_name . '_items',
                     'name'      => 'items',
                     'label'     => 'Items',
                     'type'      => 'repeater',
                     'layout'    => 'block',
                     'sub_fields' => [
-
                         [
-                            'key' => 'vv_block_vpnproviders_item_img',
-                            'name' => 'image',
+                            'key'   => self::block_name . '_item_img',
+                            'name'  => 'image',
                             'label' => 'Image',
-                            'type' => 'image',
+                            'type'  => 'image',
                         ],
                         [
-                            'key' => 'vv_block_vpnproviders_item_name',
-                            'name' => 'name',
+                            'key'   => self::block_name . '_item_name',
+                            'name'  => 'name',
                             'label' => 'Name',
-                            'type' => 'text',
+                            'type'  => 'text',
                         ],
                         [
-                            'key' => 'vv_block_vpnproviders_item_title',
-                            'name' => 'title',
+                            'key'   => self::block_name . '_item_title',
+                            'name'  => 'title',
                             'label' => 'Title',
-                            'type' => 'text',
+                            'type'  => 'text',
                         ], 
                         [
-                            'key' => 'vv_block_vpnproviders_item_decription',
-                            'name' => 'description',
+                            'key'   => self::block_name . '_item_decription',
+                            'name'  => 'description',
                             'label' => 'Description',
-                            'type' => 'text',
+                            'type'  => 'text',
                         ],
                         [
-                            'key' => 'vv_block_vpnproviders_item_score',
-                            'name' => 'score',
+                            'key'   => self::block_name . '_item_score',
+                            'name'  => 'score',
                             'label' => 'Score',
-                            'type' => 'text',
+                            'type'  => 'text',
                         ],    
-                    ]
+                        [
+                            'key'   => self::block_name . '_item_url',
+                            'name'  => 'url',
+                            'label' => 'Affiliate Link',
+                            'type'  => 'url',
+                        ],    
+                    ],
                 ], 
             ],
             'location' => [
@@ -116,8 +123,7 @@ class VpnProvidersBlock extends AbstractBlock {
         ]);
     }
 
-    public function modifyContext($context) {
-        $context['icon_type'] = $context['fields']['theme'] ?? '';
+    public function modifyContext( $context ) {
 
         return $context;
     }

@@ -1,47 +1,38 @@
-{# WN Ready #}
-
-{% set span_class = (theme == 'dark') ? 'text-white' : 'text-dark' %}
-{% set icon_angle = (theme == 'dark') ? 'fill-white' : 'fill-primary-800' %}
-{% set li_background = (theme == 'dark') ? '' : 'hover:bg-white rounded-tl-md rounded-tr-md' %}
-
 {% for item in menu.get_items %}
-
-    <li class="relative block group h-full px-5 py-4 z-50  {{li_background}}   {{ item.classes | join(' ') }} lg:pr-0">
-        <a itemprop="url" class="relative ps-prevent_default_mobile no-underline items-center font-mulish inline  lg:block lg:py-0.5" target="{{ item.target }}" href="{{ item.link }}" >
-            <span itemprop="name" class="flex-1 uppercase text-size_14 {{span_class}} tracking-widest font-bold">{{ item.title }}</span>
+    <li class="relative block group h-full py-4 z-50 lg:pr-0">
+        <a itemprop="url" class="relative flex justify-center items-center gap-1.5 flex-nowrap no-underline hover:no-underline" target="{{ item.target }}" href="{{ item.link }}" >
+            <span itemprop="name" class="block flex-1 font-opensans uppercase text-size_14 font-semibold text-secondary-700 group-hover:text-primary-700">{{ item.title }}</span>
             {% if item.children %}
-                {% include 'partials/icons.twig' with { icon : 'vv-icon_angle_right', class : 'absolute top-0 -right-3 ml-2 inline-block align-middle w-4 h-4 transform rotate-90 lg:fill-dark-600 ' ~ icon_angle } %}
+                {% include 'partials/icons.twig' with { icon : 'caret_down', class : 'block w-4 h-4 fill-text-700 fill-secondary-700 group-hover:text-secondary-700' } %}
             {% endif %}
         </a>
         {% if item.children %}
-            <div class="ps-header__dropdown invisible opacity-0 duration-300 group-hover:visible group-hover:opacity-100 group-hover:-translate-y-0 z-100 absolute top-full left-0 lg:static md:visible md:opacity-100 md:hidden md:translate-y-0 md:group-hover:block">
-                <ul class="flex flex-col bg-white text-sm shadow rounded lg:shadow-none lg:rounded-none">
-                    {% for child in item.children %}
-                        <li class="group-level2 relative {%if child.children %}menu-item-child-has-children {% endif %}">
-                            <a itemprop="url" target="{{ child.target }}" href="{{ child.link }}" class="ps-prevent_default_mobile no-underline flex items-center text-primary-800/75 text-size_16 font-normal whitespace-nowrap py-3 pl-5 pr-8 border-none hover:text-secondary-800 lg:whitespace-normal lg:block">
-                                <span itemprop="name" class="flex-1">{{ child.title }}</span>
-                                {% if child.children %}
-                                    {% include 'partials/icons.twig' with { icon : 'sc-chevrondown', class : 'fill-dark-600 -rotate-90 inline-block align-middle ml-2 w-4 h-4' } %}
-                                {% endif %}
-                            </a>
-                            
+            <ul class="invisible absolute top-full left-0 opacity-0 duration-300 z-100 bg-white shadow rounded group-hover:visible group-hover:opacity-100 group-hover:-translate-y-0">
+                {% for child in item.children %}
+                    <li class="group-level2 relative">
+                        <a itemprop="url" target="{{ child.target }}" href="{{ child.link }}" class="no-underline flex items-center py-3 px-6 group-level2-hover:no-underline group-level2-hover:bg-dark-100">
+                            <span itemprop="name" class="block flex-1 text-size_16 font-medium whitespace-nowrap text-secondary-700 group-level2-hover:text-primary-700">{{ child.title }}</span>
                             {% if child.children %}
-                                <div class="ps-header__dropdown invisible opacity-0 z-100 absolute top-0 left-full duration-300 -translate-x-3 group-level2-hover:visible group-level2-hover:opacity-100 group-level2-hover:-translate-x-0 lg:static md:visible md:opacity-100 md:hidden md:translate-x-0 md:group-hover:block">
-                                    <ul class="flex flex-col bg-white text-sm shadow rounded lg:shadow-none lg:rounded-none">
-                                        {% for grandchild in child.children %}
-                                            <li>
-                                                <a itemprop="url" title="{{ grandchild.title|striptags }}" target="{{ grandchild.target }}" href="{{ grandchild.link }}" class="ps-prevent_default_mobile no-underline flex items-center px-5 py-3 rounded text-dark-700 hover:text-primary-700 whitespace-nowrap lg:whitespace-normal hover:bg-dark-100 lg:ml-3">
-                                                    <span itemprop="name" class="flex-1">{{ grandchild.title }}</span>
-                                                </a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>					
+                                {% include 'partials/icons.twig' with { icon : 'sc-chevrondown', class : 'fill-dark-600 -rotate-90 inline-block align-middle ml-2 w-4 h-4' } %}
                             {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>					
+                        </a>
+                        
+                        {% if child.children %}
+                            <div class="invisible opacity-0 z-100 absolute top-0 left-full duration-300 -translate-x-3 group-level2-hover:visible group-level2-hover:opacity-100 group-level2-hover:-translate-x-0 lg:static md:visible md:opacity-100 md:hidden md:translate-x-0 md:group-hover:block">
+                                <ul class="flex flex-col bg-white text-sm shadow rounded lg:shadow-none lg:rounded-none">
+                                    {% for grandchild in child.children %}
+                                        <li>
+                                            <a itemprop="url" title="{{ grandchild.title|striptags }}" target="{{ grandchild.target }}" href="{{ grandchild.link }}" class="ps-prevent_default_mobile no-underline flex items-center px-5 py-3 rounded text-dark-700 hover:text-primary-700 whitespace-nowrap lg:whitespace-normal hover:bg-dark-100 lg:ml-3">
+                                                <span itemprop="name" class="flex-1">{{ grandchild.title }}</span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>					
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
         {% endif %}   
     </li>
 {% endfor %}

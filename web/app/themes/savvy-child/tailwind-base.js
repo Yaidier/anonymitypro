@@ -7,147 +7,50 @@ module.exports = {
             transparent: "transparent",
             current: "currentColor",
             primary: {
-                800: "#1B1340",
-                700: "#6D4AFF",
-                600: "#F7F5FF",
-                400: "#361D9C",
-                100: "#C5B7FF",
-                //////////////////////
-                
-                
+                800: "#07044D",
+                700: "#060181",
             },
             secondary: {
-                800: "#32CFD1",
-                700: "#1D8199",
-                100: "#ecf5fa",
-
-                //////////////////////
-                
-                
-                600: "#151718",
-                500: "#1d2127",
-                400: "#30353e",
-                300: "#21252d",
-                200: "#555d68",
-                 50: "#a5acb8",
-                 40: "#555d68",
-// 
-                
-                
-                
-                
-            },
-            random: {
-                900: "#7F79B0",
-                800: "#E8A0BA",
-                700: "#B3A295",
-                600: "#C78F8D",
-                500: "#BEB2ED",
-                400: "#BADB9E",
-                300: "#6794E0",
-                200: "#FDE9C0",
-                100: "#9FA0A1",
+                700: "#3F16B6",
             },
             dark: {
-                800: "#372580",
-                700: "#111827",
-                600: "#494B7A",
-                //////////////
-                
-                
-                500: "#373741",
-                400: "#4d4d4d",
-                300: "#E0E0E0",
-                200: "#F2F2F2",
-                100: "#FAFAFA",
-            },
-            blue: {
-                900: "#223770",
-                800: "#03b1ee",
-                700: "#2892d7",
-                //////////////
-                
-                200: "#E2F3FF",
-                150: "#EAF5FB",
-                100: "#F7F9FB",
-            },
-            green: {
-                700: "#68DBBA",
-                600: "#48ca9e",
-                500: "#23b223",
-                200: "#D7F6ED",
-            },
-            orange: {
-                700: "#f68000",
-                // 
-                
-                200: "#FFF3E2",
-            },
-            pink: {
-                700: "#FF99BE",
-                200: "#FFEDF3",
-            },
-            red: {
-                400: "#EB5757",
-            },
-            yellow: {
-                700: "#F2C94C",
+                700: "#071628",
+                300: "#435263",
+                100: "#EBF1F7",
             },
             white: "#FFFFFF",
             black: "#000000",
             transparent: "#FFF0",
-            dark_overlay: {
-                600: "#000000ad",
-                800: "#000000de",
-            },
-            breadcrumbs: {
-                500: '#ECE2CB'
-            },
-            disclosure: {
-                500: '#FDE2A9'
-            },
-            salmon: {
-                500: '#FFBF95'
+            assent: {
+                700: '#E6DE1A',
             },
         },
         fontSize: {
-            h1: ["36px", "50px"],
-            h2: ["36px", "50px"],
-            h3: ["28px", "35px"],
-            h4: ["20px", "30px"],
-            h5: ["18px", "26px"],
-            h6: ["14px", "24px"],
-            xf: ["13px", "16px"],
-            xs: ["14px", "24px"],
-            sm: ["15px", "25px"],
-            base: ["17px", "27px"],
-            icon_small: ["20px", "20px"],
-            icon: ["24px", "24px"],
-            large: ["48px", "64px"],
-            big: ["70px", "87px"],
-            disclosure: ["12px", "26px"],
-
-            size_90: ["5.625rem", "1.3em"],
-            size_60: ["3.75rem", "1.3em"],
             size_50: ["3.125rem", "1.3em"],
             size_40: ["2.5rem", "1.3em"],
+            size_36: ["2.25rem", "1.3em"],
             size_32: ["2rem", "1.3em"],
             size_24: ["1.5rem", "1.3em"],
             size_22: ["1.375rem", "1.3em"],
             size_19: ["1.188rem", "1.3em"],
-            size_18: ["1.125rem", "1.6em"],
             size_17: ["1.063rem", "1.3em"],
             size_16: ["1rem", "1.3em"],
-            size_15: ["0.938rem", "1.3em"],
             size_14: ["0.875rem", "1.3em"],
+
+
+            size_90: ["5.625rem", "1.3em"],
+            size_60: ["3.75rem", "1.3em"],
+            size_18: ["1.125rem", "1.6em"],
+            size_15: ["0.938rem", "1.3em"],
             size_13: ["0.813rem", "1.3em"],
             size_12: ["0.75rem", "1.3em"],
             size_12: ["0.688rem", "1.3em"],
 
         },
         fontFamily: {
-            inter: ["var(--font_inter)"], //Font family declared in sass/components/variables.scss
-            mulish: ["var(--font_mulish)"], // Font family declared in sass/components/variables.scss
+            opensans: ["'Open Sans', sans-serif;"],
+            roboto: ["'Roboto', sans-serif;"],
+            oswald: ["'Oswald', sans-serif;"],
         },
         container: {
             center: true,
@@ -162,7 +65,7 @@ module.exports = {
             'xl': {'max': '1319px'},
             // => @media (max-width: 1279px) { ... }
       
-            'lg': {'max': '1024px'},
+            'lg': {'max': '1230px'},
             // => @media (max-width: 1023px) { ... }
       
             'md': {'max': '767px'},
@@ -198,6 +101,8 @@ module.exports = {
                 'icon-checkbox-green': "url('/app/themes/savvy-child/assets/svg/ps-icon-checkbox-green.svg')",
                 'icon-double-quotes': "url('/app/themes/savvy-child/assets/svg/ps-icon-double-quotes.svg')",
                 'separator-wave': "url('/app/themes/savvy-child/assets/svg/ps-separator-wave.svg')",
+
+                'home-hero': "url('/app/themes/savvy-child/assets/images/vv-bg-home.png')",
             },
             animation: {
                 fade_in_0: 'fadeOut 0.4s ease-in-out 0s forwards ',
@@ -206,7 +111,6 @@ module.exports = {
                 fade_in_3: 'fadeOut 0.4s ease-in-out 0.3s forwards ',
                 fade_in_4: 'fadeOut 0.4s ease-in-out 0.4s forwards ',
             },
-
             keyframes: theme => ({
                 fadeOut: {
                     '0%': { 

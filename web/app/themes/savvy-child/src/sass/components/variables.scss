@@ -1,28 +1,19 @@
+/**
+* Variables
+*/
+
 //
 // Brand Colors
 //
-
 //Primary
-
 $primary_700: theme('colors.primary.700');
-$primary_800: theme('colors.primary.800');
-$primary_600: theme('colors.primary.600');
-$primary_100: theme('colors.primary.100');
 
 //Secondary
-$secondary_800: theme('colors.secondary.800');
 $secondary_700: theme('colors.secondary.700');
-// $secondary_600: theme('colors.secondary.600');
-$secondary_200: theme('colors.secondary.200');
 
-
-$secondary_50: theme('colors.secondary.50');
-
-//Grey
-$dark_800: theme('colors.dark.800');
+//Dark
 $dark_700: theme('colors.dark.700');
-$dark_600: theme('colors.dark.600');
-
+$dark_100: theme('colors.dark.100');
 
 //Others 
 $white: theme('colors.white');
@@ -31,16 +22,16 @@ $transparent: theme('colors.transparent');
 //
 // Font Families
 //
-:root {
-    --font_msr: 'Montserrat', sans-serif;
-}
+$roboto:    theme('fontFamily.roboto');
+$opensans:  theme('fontFamily.opensans');
+$oswald:    theme('fontFamily.oswald') ;
 
 //
 // Font Sizes
 //
-$font_size_60: theme('fontSize.size_60.0');
 $font_size_50: theme('fontSize.size_50.0');
 $font_size_40: theme('fontSize.size_40.0');
+$font_size_36: theme('fontSize.size_36.0');
 $font_size_32: theme('fontSize.size_32.0');
 $font_size_24: theme('fontSize.size_24.0');
 $font_size_22: theme('fontSize.size_22.0');
@@ -55,12 +46,14 @@ $font_size_13: theme('fontSize.size_13.0');
 //
 // Line Height
 //
-$line_height_60: theme('fontSize.size_60.1');
+$line_height_50: theme('fontSize.size_50.1');
 $line_height_40: theme('fontSize.size_40.1');
+$line_height_36: theme('fontSize.size_36.1');
 $line_height_32: theme('fontSize.size_32.1');
 $line_height_24: theme('fontSize.size_24.1');
 $line_height_19: theme('fontSize.size_19.1');
 $line_height_18: theme('fontSize.size_18.1');
+$line_height_17: theme('fontSize.size_17.1');
 $line_height_16: theme('fontSize.size_16.1');
 $line_height_15: theme('fontSize.size_15.1');
 $line_height_14: theme('fontSize.size_14.1');

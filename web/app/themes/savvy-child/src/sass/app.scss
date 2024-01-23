@@ -2,11 +2,21 @@
 @import "components/variables";
 @import "components/forms";
 @import "components/post";
-@import "components/blocks";
+@import "components/typography";
+
+@tailwind base;
+
+/**
+* Load Defaults Styles for the Theme
+* just after Tailwind's Preflight properties
+*/
+@import "components/typography";
+
 
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
 
+@import "components/blocks";
 @import "components/common";
 @import "components/footer";

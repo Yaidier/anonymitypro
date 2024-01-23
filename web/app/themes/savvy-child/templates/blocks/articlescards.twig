@@ -1,24 +1,20 @@
-<section class="vv-articlescards pb-20 bg-primary-600">
-    <div class="container flex flex-col justify-start py-20 md:py-10">
-        <h3 class="font-semibold text-dark-800 capitalize">{{ fields.title }}</h3>
-        <div class="flex gap-10 mt-10 md:flex-col lg:mt-5">
-            {% for item in fields.items %}
-                <div class="group relative bg-white rounded-md transition duration-300 shadow-cards  hover:duration-300 hover:transition hover:shadow-cards-hover md:max-w-full lg:items-start">
-                    <a href="#" class="w-full">
-                        <img class="block w-full object-cover rounded-t-md lg:rounded-tl-md md:w-full md-h-auto" src="{{ item.image.url }}">
-                    </a>
-                    <div class="relative block pt-8 pb-24 px-5 lg:pt-3 lg:pb-12 sm:pb-10">
-                        <a href="#" class="text-size_19 text-secondary-800 font-semibold duration-70 group-hover:underline group-hover:underline-offset-4">{{ item.text }}</a>
-                        <p class="text-size_18 text-dark-600 mt-4">{{ item.description }}</p>   
-                        <div class="absolute bottom-4 left-6 w-[calc(100%_-_48px)] flex justify-between items-center mt-5">
-                            <span class="font-msr text-size_18 text-dark-600 font-normal whitespace-nowrap md:text-size_16">{{ item.date }}</span>
-                            {% include 'partials/icons.twig' with { icon: 'vv-icon_arrow_right', class: 'fill-secondary-800 w-4 h-4 mr-5 duration-700 group-hover:transform group-hover:translate-x-5 group-hover:duration-700' } %}      
-                        </div>
-                    </div>      
+<section class="vv-articlescards container">
+    <h2 class="">{{ fields.title }}</h2>
+    <div class="flex gap-10 mt-10 md:flex-col lg:mt-5">
+        {% for post in fields.posts %}
+            <a class="group block relative flex-1 bg-white rounded-md transition pb-14 shadow-md hover:shadow-lg md:max-w-full lg:items-start" href="{{post.link}}">
+                <img class="block w-full object-cover rounded-t-md lg:rounded-tl-md md:w-full md-h-auto" src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt }}">
+                <h3 class="text-size_22 text-secondary-700 font-medium pt-8 px-5">{{ post.post_title }}</h3>
+                {% if post.post_excerpt %}
+                    <p class="text-size_18 text-dark-600 pt-4 px-5">{{ post.post_excerpt }}</p>
+                {% endif %}
+                <div class="absolute bottom-4 left-0 w-full flex justify-between items-center px-5">
+                    <span class="font-opensans text-size_14 text-dark-300">{{ post.date }}</span>
+                    {% include 'partials/icons.twig' with { icon: 'vv-icon_arrow_right', class: 'fill-secondary-700 w-4 h-4 duration-300 -translate-x-2 group-hover:translate-x-0' } %}      
                 </div>
-            {% endfor %} 
-        </div>   
-    </div>
+            </a>
+        {% endfor %}
+    </div>   
 </section>
 
 

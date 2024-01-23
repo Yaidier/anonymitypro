@@ -1,0 +1,93 @@
+{# WN Ready #}
+
+{% extends "layouts/base.twig" %}
+
+{% block content %}
+
+    {% include "partials/breadcrumbs.twig" %}
+
+    <section class="relative bg-gradient-to-br py-20 bg-primary-800 md:pb-12">
+        <div class="container relative">
+            <h1 class="mb-0 text-white text-size_48 leading-normal capitalize">{{author.display_name}}</h1>
+            {% if author.twitter or author.linkedin %}
+                <div class="flex justify-start items-center gap-3 mt-3">
+                    {% if author.twitter %}
+                        <a href="{{author.twitter}}">{% include 'partials/icons.twig' with { icon: 'twitter', class: 'w-4 h-4 fill-white hover:fill-secondary-700' } %}</a>
+                    {% endif %}
+                    {% if author.linkedin %}
+                        <a href="{{author.linkedin}}">{% include 'partials/icons.twig' with { icon: 'linkedin', class: 'w-4 h-4 fill-white hover:fill-secondary-700' } %}</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+            
+            <div class="flex justify-start items-center mt-5 text-white lg:justify-center lg:flex-wrap md:items-start md:flex-col"> 
+                {{author.description}}
+            </div>
+        </div>
+        {% include "partials/icons.twig" with { icon: "wave_separator", class: 'absolute left-0 -bottom-1 w-full h-fit fill-white'} %}
+    </section>
+
+    <section class="mt-10">
+        <div class="container">
+            {% for post in posts %}
+                <div class="flex mb-8 p-2.5 bg-white shadow-md hover:shadow-lg transition-shadow rounded-lg md:block ">
+                    <div class="relative w-5/12 md:w-full ">
+                        <a class="block h-full no-underline" href="{{ post.link }}">
+                            {% set featured_img = function('get_the_post_thumbnail', post.id, 'ps-post-featured', { 'class': 'block w-full h-56 rounded-lg object-cover md:max-h-80' } ) %}
+                            {% set featured_img = featured_img ? featured_img : '<img class="block w-full max-h-56 h-full rounded-lg object-cover md:max-h-80" src="/app/themes/savvy-child/assets/images/post-placeholder.png" alt="" loading="lazy" decoding="async">' %}
+                            {{  featured_img|raw }}
+                        </a>
+                    </div>
+                    <div class="flex justify-between flex-col w-7/12 px-7 md:w-full md:px-0">
+                        <div class="flex flex-col justify-center md:w-full md:mt-4">
+                            <a class="group no-underline text-size_24 font-semibold" href="{{ post.link }}">{{ post.title|raw }}</a>
+                            <div class="flex justify-start items-center mt-2 gap-5 lg:flex-wrap md:items-start md:flex-col md:gap-1"> 
+                                <a class="group flex justify-start items-center md:ml-0 no-underline" href="{{ post.author.link }}" >
+                                    {% include 'partials/icons.twig' with { icon : 'user', class : 'w-3.5 h-3.5 fill-primary-700' } %}
+                                    <span class="block ml-2 text-dark-800 text-size_15 font-normal whitespace-nowrap capitalize group-hover:text-primary-700">{{ post.author.name }}</span>
+                                </a>
+                                <span class="flex justify-start items-center ">
+                                    <span class="block text-dark-300 text-size_15 font-normal whitespace-nowrap"><span class="md:hidden">Last Updated: </span>{{ post.modified_date() }}</span>
+                                </span>
+                            </div>
+                            <div class="font-opensans mt-5 font-normal text-dark-600 mb-3 ">
+                                {% set p_excerpt = post.preview.length(20).read_more('').force %}
+                                {% if p_excerpt %} 
+                                    {{ p_excerpt | raw }}
+                                {% else %}
+                                    {{ post.post_content|excerpt(20) | raw }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <a class="group flex justify-start items-center font-normal text-primary-700 no-underline" href="{{ post.link }}">
+                            {{ __( 'Read More', 'savvy' ) }}
+                            {% include 'partials/icons.twig' with { icon : 'chevron_right', class : 'ml-1 fill-primary-700 w-3.5 h-3.5 group-hover:fill-primary-700' } %}
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="grid grid-cols-[repeat(auto-fill,_36px)] gap-x-3 gap-y-3 ">
+                {% set item_prop = 'flex justify-center items-center rounded-lg border border-dark-400 w-9 h-9 bg-white  text-disclosure font-semibold' %}
+                {% if posts.pagination.prev %}
+                    <a class="{{item_prop}} group no-underline hover:bg-dark-100" href="{{ posts.pagination.prev.link }}">
+                        {% include 'partials/icons.twig' with { icon : 'chevron_right', class : 'w-4 h-4 fill-dark-800 group-hover:fill-primary-700 rotate-180' } %}
+                    </a>
+                {% endif %}
+
+                {% for page in posts.pagination.pages %}
+                    {% if page.link %}
+                        <a class="{{item_prop}} no-underline text-dark-500 hover:text-primary-700 font-normal hover:bg-dark-100" href="{{ page.link }}">{{ page.title }}</a>
+                    {% else %}
+                        <span class="flex justify-center items-center  text-disclosure rounded-lg border font-normal text-white border-primary-700 w-9 h-9 bg-primary-700">{{ page.title | raw }}</span>
+                    {% endif %}
+                {% endfor %}
+                {% if posts.pagination.next %}
+                    <a class="{{item_prop}} group no-underline hover:bg-dark-100" href="{{ posts.pagination.next.link }}">
+                        {% include 'partials/icons.twig' with { icon : 'chevron_right', class : 'w-4 h-4 fill-dark-800 group-hover:fill-primary-700' } %}
+                    </a>
+                {% endif %}    
+            </div>
+        </div>    
+    </section>
+{% endblock %}

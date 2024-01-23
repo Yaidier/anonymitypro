@@ -1,0 +1,25 @@
+<ol class="list-none text-xs text-dark-600 mb-0">
+    {% for heading in headings %}
+        {% set index = subloop ~ loop.index ~ '.' %}
+        <li class="ml-0 py-3.5 mb-0 before:hidden {% if not is_child %} relative {% else %} pl-4 {% endif %} {% if loop.last %}  {% endif %}">
+            <a class="group flex justify-start text-size_16 text-secondary-200 pr-5 no-underline" href="#{{ heading.id }}" title="{{ heading.title }}">
+                <span class="mr-1 block w-fit font-medium text-secondary-200">{{index}}</span>
+                <span class="text-secondary-200 font-normal group-hover:text-primary-700">{{ heading.title|raw }}</span>
+            </a>     
+            {% if heading.children %}
+                <input class="peer hidden" type="checkbox" id="ev-table-of-content-{{heading.id}}" >
+                <label class="group absolute  transition-transform leading-none top-4 right-1 cursor-pointer peer-checked:rotate-180 peer-checked:transition-transform" for="ev-table-of-content-{{heading.id}}">
+                    {% include 'partials/icons.twig' with { icon : 'ev-chevrondown', class : 'w-3.5 h-3.5 fill-dark-600 group-hover:fill-primary-700' } %}
+                </label>
+            {% endif %}
+            {% if heading.children %}
+                <div class="overflow-hidden max-h-0 peer-checked:max-h-[800vh] ransition-all" >
+                    {% include "partials/table-of-contents-menu-iterator.twig" with { 'headings': heading.children, 'is_child': true, 'subloop': loop.index ~ '.' } only %}
+                </div>			  
+            {% endif %}       
+        </li>
+        {% if not is_child or not loop.last %}
+            <div aria-hidden="true" class="border-t border-grey-200"></div> 
+        {% endif %}
+    {% endfor %}
+</ol>

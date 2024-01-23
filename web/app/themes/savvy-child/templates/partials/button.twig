@@ -1,13 +1,7 @@
 {% set theme = theme ?? 'default' %}
 
 {% if theme == 'radial_gradient' %}
-    <div class="group flex flex-col items-center {{class}}">
-        <a role="button" href="{{url}}" class="min-w-[150px] p-0.5 bg-gradient-to-r from-primary-700 to-secondary-800 rounded-full border-transparent transition duration-700 no-underline group-hover:bg-gradient-to-r group-hover:from-primary-700 group-hover:to-primary-700" >
-            <div class="block p-2 w-full h-auto bg-primary-600 rounded-full font-msr text-size_17 font-semibold text-primary-700 text-center group-hover:text-primary-400 group-hover:bg-primary-600">
-                <div class="bg-gradient-to-r from-primary-700 to-secondary-800 bg-clip-text text-transparent group-hover:to-primary-700">{{ text }}</div>
-            </div>
-        </a>    
-    </div>
+    <a class="border-2 border-secondary-700 rounded-full text-secondary-700 font-oswald text-size_18 px-5 py-1 no-underline text-center hover:no-underline hover:bg-secondary-700 hover:text-white {{class}}" href="{{url}}">{{ text }}</a>
 {% elseif theme == 'radial_gradient_svg' %}
     <div class="flex items-center {{class}}">
         <a role="button" href="{{url}}" class="group min-w-[180px] p-0.5 bg-gradient-to-r from-primary-700 to-secondary-800 rounded-full no-underline hover:bg-gradient-to-r hover:to-primary-700" >
@@ -18,11 +12,5 @@
         </a>    
     </div>
 {% else %}
-    <div class="group relative flex flex-col items-center {{class}}  rounded-full bg-gradient-to-r from-primary-400 to-secondary-700">
-        <div class="absolute w-full h-full top-0 left-0 rounded-full transition duration-500 bg-gradient-to-r from-primary-700 to-secondary-800 group-hover:opacity-0 group-hover:transition group-hover:duration-500"></div>
-        <a role="button" class="flex justify-center items-center w-fit  px-5 py-4 rounded-full no-underline" href="{{url}}">
-            <span class=" font-msr text-size_17 font-semibold text-white">{{ text }}</span>
-        </a>
-    </div>
-
+    <a class="text-primary-700 bg-assent-700 rounded-full py-3 px-7 font-oswald text-size_19 font-medium cursor-pointer no-underline text-center hover:no-underline hover:bg-primary-700 hover:text-white {{class}}" href="{{url}}" role="button">{{text}}</a>
 {% endif %}

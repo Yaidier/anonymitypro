@@ -1,0 +1,23 @@
+{% set buttons  = 'flex justify-center items-center w-10 h-10 rounded-md mr-4 hover:opacity-80' %}
+
+<button class="{{buttons}} bg-[#1DA1F2]" data-sharer="twitter" data-title="{{ post.title }}" data-url="{{ post.link }}" data-via="privacysav" aria-label="Share on Twitter">
+    {% include 'partials/icons.twig' with { icon : 'twitter', class : 'w-6 h-6 fill-white' } %}
+</button>
+<button class="{{buttons}} bg-[#1877F2]" data-sharer="facebook" data-url="{{ post.link }}" aria-label="Share on Facebook">
+    {% include 'partials/icons.twig' with { icon : 'facebook', class : 'w-6 h-6 fill-white' } %}
+</button>
+<button class="{{buttons}} bg-[#ff5700]" data-sharer="reddit" data-url="{{ post.link }}" aria-label="Share on Reddit">
+    {% include 'partials/icons.twig' with { icon : 'reddit', class : 'w-6 h-6 fill-white' } %}
+</button>
+<button class="{{buttons}} bg-[#2867B2]" data-sharer="linkedin" data-url="{{ post.link }}" aria-label="Share on Linkedin">
+    {% include 'partials/icons.twig' with { icon : 'linkedin', class : 'w-6 h-6 fill-white' } %}
+</button>
+<button class="{{buttons}} bg-[#25d366]" data-sharer="whatsapp" data-title="{{ post.title }}" data-url="{{ post.link }}" aria-label="Share on Whatsapp">
+    {% include 'partials/icons.twig' with { icon : 'whatsapp', class : 'w-6 h-6 fill-white' } %}
+</button>
+<button class="{{buttons}} bg-[#0088CC]" data-sharer="telegram" data-title="{{ post.title }}" data-url="{{ post.link }}" aria-label="Share on Telegram">
+    {% include 'partials/icons.twig' with { icon : 'plane', class : 'w-6 h-6 fill-white' } %}
+</button>
+<button class="{{buttons}} bg-[#bdbdbd]" data-sharer="email" data-to="" data-title="{{ post.title }}" data-url="{{ post.link }}" aria-label="Send by Email">
+    {% include 'partials/icons.twig' with { icon : 'envelop', class : 'w-6 h-6 fill-white' } %}
+</button>

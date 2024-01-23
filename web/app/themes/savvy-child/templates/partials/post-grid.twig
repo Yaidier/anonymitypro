@@ -1,0 +1,37 @@
+{% for post in posts %}
+    {% set primary_category = utils.getPrimaryCategory(post.id, null, post.post_type) %}
+    <div class="flex mb-8 p-2.5 bg-white shadow-md hover:shadow-lg transition-shadow rounded-lg md:block">
+        <div class="relative w-4/12 md:w-full ">
+            <a class="block h-full no-underline" href="{{ post.link }}">
+                {{ function('get_the_post_thumbnail', post.id, 'medium', { 'class': 'block w-full max-h-56 h-full rounded-lg object-cover md:max-h-80' } ) | raw }}
+            </a>
+        </div>
+        <div class="flex flex-col justify-center px-7 w-8/12 md:w-full md:mt-4 md:px-2.5">
+            <a class="group no-underline text-secondary-700 text-size_24 font-bold" href="{{ post.link }}">{{ post.title|raw }}</a>
+
+            <div class="flex justify-start items-center mt-2 gap-4"> 
+                <a class="group flex justify-start items-center no-underline" href="{{ post.author.link }}" >
+                    {% include 'partials/icons.twig' with { icon : 'user', class : 'w-4 h-4 fill-primary-700' } %}
+                    <span class="block ml-2 font-roboto text-size_19 font-meidum whitespace-nowrap capitalize group-hover:text-primary-700">{{ post.author.name }}</span>
+                </a>
+                <span class="flex justify-start items-center">
+                    {% include 'partials/icons.twig' with { icon : 'clock', class : 'w-4 h-4 fill-dark-300/75' } %}
+                    <span class="block ml-2 font-roboto text-dark-300/75 text-size_16 font-normal whitespace-nowrap">Last Updated: {{ post.modified_date() }}</span>
+                </span>
+            </div>
+
+            <div class="font-inter text-sm font-normal text-dark-600 mt-5 ">
+                {% set p_excerpt = post.preview.length(20).read_more('').force %}
+                {% if p_excerpt %} 
+                    {{ p_excerpt | raw }}
+                {% else %}
+                    {{ post.post_content|excerpt(20) | raw }}
+                {% endif %}
+            </div>
+            <a class="group font-opensans flex justify-start items-center font-semibold text-size_16 no-underline mt-3 hover:text-primary-700" href="{{ post.link }}">
+                {{ __( 'Read More', 'savvy' ) }}
+                {% include 'partials/icons.twig' with { icon : 'ps-icon_angle_right', class : 'ml-px stroke-primary_alt-400 w-3.5 h-3.5 group-hover:stroke-primary-700' } %}
+            </a>
+        </div>
+    </div>
+{% endfor %}

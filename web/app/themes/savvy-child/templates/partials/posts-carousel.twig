@@ -1,0 +1,58 @@
+<div class="wn-carousel mt-3 -mx-2.5" data-desktop="3" data-tablet="2" data-mobile="1" data-autoplay="false" data-duration="400" data-autoplaydelay="0" data-autoplaydirection="left" data-transitiontype="ease">
+    <div class="wn-carousel_btns absolute right-2.5 bottom-full -translate-y-3 flex justify-center items-center gap-3">
+        <button class="wn-carousel_btn_prev group flex justify-center items-center bg-secondary-200 shadow-md rounded-full p-3 transition-colors duration-300 hover:bg-secondary-700" aria-label="Previous Slide">{% include "partials/icons.twig" with { icon: 'chevron_left', class: 'fill-secondary-700 w-4 h-4 group-hover:fill-white' } %} </button>
+        <button class="wn-carousel_btn_next group flex justify-center items-center bg-secondary-200 shadow-md rounded-full p-3 transition-colors duration-300 hover:bg-secondary-700" aria-label="Next Slide">{% include "partials/icons.twig" with { icon: 'chevron_right', class: 'fill-secondary-700 w-4 h-4 group-hover:fill-white' } %}</button>
+    </div>
+    {% for post in posts %}
+        <div class="wn-carousel_item flex justify-center items-center px-2 pt-0.5 pb-5">
+            <div class="relative flex justify-between items-start flex-col no-underline rounded-lg h-full flex-grow overflow-hidden shadow-md transition-shadow duration-300 hover:text-dark-800 hover:shadow-lg" data-category="{{post.category}}" >
+                <div class="w-full">
+                    {# The Category Tag #}
+                    {% if 'true' == content_category_tag %}
+                        <a href="{{ function('get_term_link', post.category) }}" class="absolute no-underline left-2 top-3 py-1 text-size_13 rounded-full bg-secondary-700 text-white uppercase hover:bg-primary-700 hover:text-white">{{post.category}}</a>
+                    {% endif %}
+
+                    {% set featured_img = function('get_the_post_thumbnail', post.id, 'post-thumbnail', { 'class': 'block w-full h-40 object-cover' } ) %}
+                    <a class="no-underline" href="{{post.link}}" {% if post.open_new_tab %} target="_blank" {% endif %} {% if post.nofollow %} rel="noopener noreferrer nofollow" {% endif %}>
+                        {% if featured_img %}
+                            {{featured_img}}
+                        {% else %}
+                            <div class="flex justify-center items-center w-full h-40 bg-grey-120">
+                                {% include "partials/icons.twig" with { icon: 'ev-icon_blog', class: 'fill-white w-16 h-16' } %}
+                            </div>
+                        {% endif %}
+                    </a>
+                    
+                    {# The Title #}
+                    <a class="block no-underline mt-5 mx-3 text-size_19 font-bold" href="{{post.link}}" {% if post.open_new_tab %} target="_blank" {% endif %} {% if post.nofollow %} rel="noopener noreferrer nofollow" {% endif %}>{{post.title}}</a>
+
+                    {# The Excerpt #}
+                    <p class="mt-3 text-size_17 mx-3">{{post.preview|length > 100 ? post.preview|slice(0, 100) ~ '...' : post.preview}}</p>
+                </div>
+
+                {# The Meta Info #}
+                {% if post.author.name or post.date %}
+                    <div class="w-full mt-5 mx-3 mb-3">
+                        {% if post.author.name %}
+                            <div class="flex justify-start items-center group no-underline">
+                                {% include 'partials/icons.twig' with { icon: 'ev-icon_user', class: 'fill-primary-700 w-3.5 h-3.5' } %}
+                                <a class="block no-underline ml-2 text-size_16 whitespace-nowrap overflow-ellipsis hover:text-primary-700 capitalize" href="{{post.author.link}}">{{ post.author.name }}</a>
+                            </div>
+                        {% endif %}
+                        {% if post.date %}
+                            <div class="flex justify-start items-center mt-1">
+                                {% include 'partials/icons.twig' with { icon: 'ev-icon_calendar', class: 'fill-primary-700 w-3.5 h-3.5' } %}
+                                {% if post.is_custom_card %}
+                                    {% set published_date = post.date %}
+                                {% else %}
+                                    {% set published_date = __( post.date()|date('F'), 'savvy' ) ~ ' ' ~ post.date()|date('j, Y') %}
+                                {% endif %}
+                                <span class="block ml-2 text-size_14 whitespace-nowrap">{{ published_date }}</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

@@ -1,25 +1,13 @@
 <section class="vv-bannerfooter bg-primary-800">
-    <div class="container">
-        <div class="flex flex-col justify-center item-center gap-5 py-16">
-            <h3 class="text-center text-white font-semibold">{{ fields.name }}</h3>
-            <p class="text-white text-size_18 font-normal text-center w-2/5 mr-auto ml-auto md:text-size_18 md:w-full">{{ fields.intro }}</p>
-            {% include 'partials/button.twig' with { 
-                text: fields.btn_name,
-                url: fields.btn_link,
-                disclosure: fields.btn_disclosure,
-                class: "mx-auto w-fit mt-5",
-                } only
-            %}
-        </div>
-        <img class="block mr-auto w-1/2 h-auto" src="{{ fields.image.url }}">    
-    </div>   
+    <div class="container flex flex-col justify-center item-center gap-5 py-16">
+        <h3 class="text-center text-white font-semibold">{{ fields.name }}</h3>
+        <p class="text-white text-size_18 font-normal text-center w-2/5 mr-auto ml-auto md:text-size_18 md:w-full">{{ fields.intro }}</p>
+        {% include 'partials/button.twig' with { 
+            text: fields.btn_name,
+            url: fields.btn_link,
+            disclosure: fields.btn_disclosure,
+            class: "mx-auto w-fit mt-5",
+            } only
+        %}
+    </div>
 </section>
-
-
-
-
-
-
-
-
-

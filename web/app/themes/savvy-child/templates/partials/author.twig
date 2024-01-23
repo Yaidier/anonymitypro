@@ -1,37 +1,25 @@
-{# WN Ready #}
+<div class="relative overflow-hidden flex justify-between items-start border-2 border-dark-100 rounded-lg py-8 px-5 gap-5 md:flex-col">
+    <div class="border border-primary-700 rounded-full shrink-0 p-1 md:mx-auto">
+        <img loading="lazy" decoding="async" class="block w-20 h-20 mx-auto object-cover rounded-full" src="{{author.avatar}}" alt="{{author.name}}" >
+    </div>
 
-{% if heading %}
-    <h3 class="mb-14">{{heading}}</h3>
-{% endif %}
-
-<div class="relative overflow-hidden flex justify-between rounded-lg {{wrap_prop}}">
-    {% if show_icon_watermark %}
-        {% include 'partials/icons.twig' with { icon : 'ev-icon_fingerprint', class : 'absolute right-2 top-2 fill-primary-400 opacity-10 w-24 h-24' } %}
-    {% endif %}
-    <div class="w-[190px] flex justify-center flex-col pr-4 mr-8 border-solid border-r border-dark-300 md:mr-0 md:pr-0 md:border-none">
-        <img width="103px" height="103px" loading="lazy" class="w-full max-w-[103px] mx-auto object-contain rounded-full" src="{{ author.avatar }}" alt="{{ author.name }}" >
-        <div class="text-center mt-1.5">
+    <div class="w-full">
+        <a href="{{ author.link }}" class="block text-size_22 font-medium capitalize text-secondary-700 no-underline md:text-center">{{ author.name }}</a>
+        <div class="flex justify-start items-center text-center gap-2 mt-1.5 md:justify-center">
             {% if author.meta('twitter') %}
-                <a href="{{ author.meta('twitter') }}" target="_blank" class="group text-dark-500 mx-2 no-underline ">
-                    {% include 'partials/icons.twig' with { icon : 'ev-icon_twitter', class : 'inline-block fill-dark-500 w-4 h-4 group-hover:fill-primary-700' } %}
+                <a href="{{ author.meta('twitter') }}" target="_blank" class="group block text-dark-500 no-underline">
+                    {% include 'partials/icons.twig' with { icon : 'twitter', class : 'inline-block fill-secondary-700 w-4 h-4 group-hover:fill-primary-700' } %}
                 </a>
             {% endif %}    
             {% if author.meta('linkedin') %}
-                <a href="{{ author.meta('linkedin') }}" target="_blank" class="group text-dark-500 mx-2 no-underline ">
-                    {% include 'partials/icons.twig' with { icon : 'ev-icon_linkedin', class : 'inline-block fill-dark-500 w-4 h-4 group-hover:fill-primary-700' } %}
+                <a href="{{ author.meta('linkedin') }}" target="_blank" class="group block text-dark-500 no-underline">
+                    {% include 'partials/icons.twig' with { icon : 'linkedin', class : 'inline-block fill-secondary-700 w-4 h-4 group-hover:fill-primary-700' } %}
                 </a>
             {% endif %}
         </div>
-        <a class="group text-center no-underline" href="{{ author.link }}" >
-            <h4 class="mb-0 group-hover:text-primary-700">{{ author.name }}</h4>
-        </a>
-    </div>
-
-    <div class="w-full md:mt-3 ">
-        <p class="font-mulish text-xs text-dark-600 font-normal leading-7 mt-3 mb-2.5 ">{{ author.description | raw }} </p>
-        <a href="{{ author.link }}" class="group inline-flex justify-center items-center font-mulish text-xs text-primary_alt-400 font-normal no-underline hover:text-primary-700 ">More from {{author.first_name | raw}}
-            {% include 'partials/icons.twig' with {icon: 'ev-icon_angle_right', class: 'w-3.5 h-3.5 stroke-grey-800 '} %}
-        </a>
+        <div class="font-normal leading-7 mt-3 md:text-center">
+            {{author.description}}
+        </div>
+        <a href="{{author.link}}" class="block mt-3 md:text-center">More from {{author.first_name|raw}}</a>
     </div>
 </div>
-

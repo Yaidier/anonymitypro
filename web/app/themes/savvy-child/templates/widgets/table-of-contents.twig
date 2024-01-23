@@ -1,26 +1,19 @@
 {# WN Ready #}
 
-<div class="{% if is_sticky %} sticky left-0 top-0 {% endif %} lg:z-10">
-    <div class="ps-table_of_contents transition-all ps-thin_scrollbar shadow-md hover:shadow-lg mb-8 w-full bg-white rounded-lg py-7 px-6 overflow-y-auto h-fit {% if has_article_score %} max-h-[calc(100vh_-_200px)] {% else %} max-h-[calc(100vh_-_80px)] {% endif %} lg:bg-none lg:py-3 lg:px-5 lg:fixed lg:left-0 lg:top-0 ">
-        <input class="peer hidden" type="checkbox" id="ps-table-of-content-wrap" checked>
-        <div class="group flex justify-between items-center lg:mb-0 peer-checked:mb-5">
-            <span class="block font-mulish font-bold text-h4 text-dark-700 peer-checked:text-primary-700 ">{{ instance.title|apply_filters('widget_title') }}</span>
-            <label class="" role="button" for="ps-table-of-content-wrap">
-                {% include 'partials/icons.twig' with { icon : 'sc-icon_bars', class : 'sc-icon_bars hidden block w-5 h-5 fill-dark-600 transition-all lg:block' } %}
-                {% include 'partials/icons.twig' with { icon : 'sc-icon_cancel', class : 'sc-icon_cancel hidden w-5 fill-dark-600 transition-all' } %}
-                {% include 'partials/icons.twig' with { icon : 'sc-chevrondown', class : 'sc-icon_chevrondown block w-5 h-5 fill-dark-600 transition-all lg:hidden' } %}
-            </label>
+<div class="{% if is_sticky %} sticky left-0 top-0 {% endif %} lg:z-50">
+    <div class="savvy-table_of_contents transition-all sc-thin_scrollbar shadow-md hover:shadow-lg mb-8 w-full bg-white rounded-lg py-5 px-6 overflow-y-auto h-fit max-h-[calc(100vh_-_80px)] lg:bg-none lg:py-3 lg:px-5 lg:fixed lg:left-0 lg:top-0 lg:-translate-y-full lg:z-10">
+        <div class="group flex justify-between items-center lg:mb-0">
+            <span class="block font-medium text-size_19 text-dark-700">{{ instance.title|apply_filters('widget_title') }}</span>
+            <button class="savvy-table_of_contents_toggle_btn" aria-label="Open or Close Table of Content" title="Open or Close Table of Content">
+                {% include 'partials/icons.twig' with { icon : 'bars', class : 'savvy-icon_bars hidden block w-5 h-5 fill-dark-600 transition-all lg:block' } %}
+                {% include 'partials/icons.twig' with { icon : 'cancel', class : 'savvy-icon_cancel hidden w-5 fill-dark-600 transition-all' } %}
+                {% include 'partials/icons.twig' with { icon : 'chevron_down', class : 'savvy-icon_chevrondown block w-5 h-5 fill-dark-600 transition-all lg:hidden' } %}
+            </button>
         </div>
-        {% if page_headings %}
-        <div class="peer max-h-0 overflow-y-hidden h-fit peer-checked:max-h-screen peer-checked:overflow-y-visible lg:peer-checked:mt-4 transition-all">
-            {% include "widgets/table-of-contents-menu.twig" with { 'headings': page_headings, 'is_child': false } only %}   
-        </div>
+        {% if page_headings is not empty %}
+            <div class="savvy-table_of_contents_content h-fit transition-all max-h-0 overflow-hidden">
+                {% include "widgets/table-of-contents-menu.twig" with { 'headings': page_headings, 'is_child': false } only %}   
+            </div>
         {% endif %}
     </div> 
-    {% if has_article_score %} 
-    <p class="mb-2.5">{{intro}}</p>
-        {% set intro = '<p class="font-mulish font-light text-[13px] text-dark-600 mb-2.5"><span class="ps-article_score_value text-sm font-bold">' ~ article_score_data.helpful_per ~ '%</span> of readers found this article <b>helpful.</b></p>' %}
-        {% set votes = '<span clas="ps-article_votes">' ~ article_score_data.total ~ ' </span>' ~ __( 'votes', 'savvy' ) ~ ' - <span class="ps-article_score_value">' ~ article_score_data.helpful_per ~ '%</span>' %}
-        {% include "partials/score.twig" with { intro: intro } %}
-    {% endif %}
 </div>
