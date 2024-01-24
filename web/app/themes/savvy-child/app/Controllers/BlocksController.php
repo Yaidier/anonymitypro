@@ -13,6 +13,7 @@ use ScTheme\Blocks\TeamBlock;
 use ScTheme\Blocks\VpnProvidersBlock;
 use ScTheme\Blocks\FooterBlock;
 use ScTheme\Blocks\PopupBlock;
+use Timber\Timber;
 
 /**
  * The Blocks Controller Class
@@ -121,7 +122,7 @@ class BlocksController {
         }
 
         if ( $block['blockName'] === 'yoast/faq-block' ) {
-            $blockContent = \Timber::compile( 'blocks/yoast-faq-block.twig', ['block' => $block] );
+            $blockContent = Timber::compile( 'blocks/yoast-faq-block.twig', ['block' => $block] );
         }
 
         return $blockContent;
