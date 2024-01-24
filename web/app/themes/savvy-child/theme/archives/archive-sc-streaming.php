@@ -1,11 +1,14 @@
 <?php
 
 namespace ScTheme;
-use SavvyTheme\Resources\Utilities;
 
-$context                                = \Timber::context();
-$context['posts']                       = new \Timber\PostQuery();
-$context['dynamic_sidebar']             = \Timber::get_widgets('ps-geoblockings-hub-sidebar');
+use Timber\Timber;
+use SavvyTheme\Resources\Utilities;
+use Timber\PostQuery;
+
+$context                                = Timber::context();
+$context['posts']                       = new PostQuery();
+$context['dynamic_sidebar']             = Timber::get_widgets('ps-geoblockings-hub-sidebar');
 $context['hide_subheader_author']       = true;
 $context['hide_subheader_date']         = true;
 $context['show_affiliate_disclosure']   = false;
@@ -37,5 +40,5 @@ add_filter( 'wpseo_breadcrumb_links', function ( $crumbs ) {
   return $crumbs;
 });
 
-\Timber::render( 'archives/archive.twig', $context );
+Timber::render( 'archives/archive.twig', $context );
   

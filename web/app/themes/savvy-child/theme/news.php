@@ -1,12 +1,17 @@
 <?php
 /**
  * Template Name: News
- * Description: The News Template  */
+ * Description: The News Template 
+ */
 
-$context                                = \Timber::context();
-$context['post']                        = new \Timber\Post();
-$context['posts']                       = new \Timber\PostQuery();
-$context['dynamic_sidebar']             = \Timber::get_widgets('ps-news-category-sidebar');
+use Timber\Timber;
+use Timber\Post;
+use Timber\PostQuery;
+
+$context                                = Timber::context();
+$context['post']                        = new Post();
+$context['posts']                       = new PostQuery();
+$context['dynamic_sidebar']             = Timber::get_widgets('ps-news-category-sidebar');
 $context['subheader_title']             = $context['post']->post_title;
 $context['subheader_intro']             = $context['post']->intro;
 $context['hero_image']                  = '/app/themes/savvychild-child/assets/svg/ps-bg-news.svg';
@@ -33,4 +38,4 @@ if ($context['posts']->pagination()->current === 1) {
     $context['posts_list'] = $context['posts'];
 }
 
-\Timber::render( ['archives/index.twig'], $context );
+Timber::render( ['archives/index.twig'], $context );

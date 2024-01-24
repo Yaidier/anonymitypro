@@ -3,11 +3,13 @@
  * Template Name: Paid Ads Page
  * Description: The Paid Ads Page Origial Version */
 
-$context = \Timber::context();
+use Timber\Timber;
+use Timber\Post;
 
-$current_date = get_the_date( 'l F j, Y' );
+$context        = Timber::context();
+$current_date   = get_the_date( 'l F j, Y' );
 
-$timber_post                            = new \Timber\Post();
+$timber_post                            = new Post();
 $context['template_fields']             = get_fields();
 $context['post']                        = $timber_post;
 $context['hide_subheader_author']       = true;
@@ -19,4 +21,4 @@ $context['hide_section_comments']       = true;
 $context['hide_section_comments_form']  = true;
 $context['hide_section_related_posts']  = true;
 
-\Timber::render(['post-' . $timber_post->post_name . '.twig', 'posts/paid-ads.twig'], $context);
+Timber::render(['post-' . $timber_post->post_name . '.twig', 'posts/paid-ads.twig'], $context);

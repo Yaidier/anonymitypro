@@ -22,10 +22,13 @@
  * 
  */
 
-$context            = \Timber::context();
-$timber_post        = new \Timber\Post();
+use Timber\Timber;
+use Timber\Post;
+
+$context            = Timber::context();
+$timber_post        = new Post();
 $context['post']    = $timber_post;
 
 $post_content = $timber_post->post_content;
 
-\Timber::render( array( 'pages/page-home.twig', 'posts/page.twig' ), $context );
+Timber::render( array( 'pages/page-home.twig', 'posts/page.twig' ), $context );

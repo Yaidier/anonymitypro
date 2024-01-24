@@ -1,9 +1,12 @@
 <?php
 
-$context = \Timber::context();
+use Timber\Timber;
+use Timber\PostQuery;
 
-$context                                = \Timber::context();
-$context['posts']                       = new \Timber\PostQuery();
+$context = Timber::context();
+
+$context                                = Timber::context();
+$context['posts']                       = new PostQuery();
 $context['subheader_title']             = 'Search results for "' . get_search_query() . '"';
 $context['hero_image']                  = '/app/themes/savvychild-child/assets/svg/ps-bg-search.svg';
 $context['hide_subheader_author']       = true;
@@ -18,4 +21,4 @@ add_filter('wpseo_breadcrumb_links', function ( $crumbs ) {
     return $crumbs;
 });
 
-\Timber::render( 'archives/archive.twig', $context );
+Timber::render( 'archives/archive.twig', $context );

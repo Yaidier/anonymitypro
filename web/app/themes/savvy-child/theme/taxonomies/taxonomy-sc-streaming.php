@@ -1,6 +1,11 @@
 <?php
 
 namespace ScTheme;
+
+use Timber\Timber;
+use Timber\Team;
+use Timber\Term;
+use Timber\PostQuery;
 use SavvyTheme\Resources\Utilities;
 
 if ( isset( $_GET['month'] ) ) {
@@ -20,10 +25,10 @@ if ( isset( $_GET['month'] ) ) {
     );
 }
 
-$context                                = \Timber::context();
-$context['term']                        = new \Timber\Term();
-$context['posts']                       = isset( $args ) ? new \Timber\PostQuery( $args ) : new \Timber\PostQuery();
-$context['dynamic_sidebar']             = \Timber::get_widgets('ps-geoblockings-sidebar');
+$context                                = Timber::context();
+$context['term']                        = new Term();
+$context['posts']                       = isset( $args ) ? new PostQuery( $args ) : new PostQuery();
+$context['dynamic_sidebar']             = Timber::get_widgets('ps-geoblockings-sidebar');
 $context['subheader_title']             = $context['term']->short_description;
 $context['subheader_intro']             = $context['term']->description;
 $context['hide_subheader_author']       = true;
@@ -32,4 +37,4 @@ $context['show_affiliate_disclosure']   = false;
 
 add_filter( 'wpseo_breadcrumb_links', [ Utilities::class, 'adjust_yoast_breadcrumbs_for_term_pages' ]);
 
-\Timber::render( 'archives/archive.twig', $context );
+Timber::render( 'archives/archive.twig', $context );
