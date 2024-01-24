@@ -16,7 +16,7 @@
     </div>
     <div class="flex justify-center items-center flex-wrap gap-5 mt-10">    
         {% for item in fields.items %}
-            <a href="{{item.url}}" class="relative group flex flex-col justify-center items-center flex-1 flex-grow min-w-56 min-h-52 border-2 border-primary-700 rounded-md transition hover:bg-secondary-700">
+            <a href="{{item.url}}" class="relative group flex flex-col justify-center items-center flex-1 flex-grow min-w-56 min-h-52 border-2 border-primary-700 rounded-md transition hover:bg-secondary-700 hover:no-underline">
                 <img class="absolute w-28 h-auto top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 group-hover:hidden" src="{{ item.image.url }}" alt="{{ item.image.alt }}">
                 <span class="text-white font-medium text-size_24 text-center">{{ item.name }}</span>
                 <div class="absolute top-0 left-0 w-fit bg-primary-700 py-1 px-2 rounded-br-md">
