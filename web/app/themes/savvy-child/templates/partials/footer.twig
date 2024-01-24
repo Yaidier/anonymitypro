@@ -12,11 +12,11 @@
         </div>
     </div>
 
-    <div class="container grid grid-cols-5 py-14 md:grid-cols-1 md:gap-10">
-        <div>
-            <img width="170px" height="38px" src="/app/themes/savvy-child/assets/svg/vv-logo-dark-2.svg" alt='VPNVerity Logo'>
-        </div>
-        <div class="flex flex-col gap-4"> 
+    <div class="container flex justify-between items-start py-14 gap-10 shrink-0 md:flex-col">
+        <a class="block" href="{{home_url}}">
+            <img class="block w-52" src="/app/themes/savvy-child/assets/images/ap-logo-2.png" alt='AnonymityPro Logo'>
+        </a>
+        <div class="flex flex-col gap-4 mt-3"> 
             <p class="font-roboto font-semibold text-dark-700 text-size_19">{{ footer_menu_1.name }}</p>
             <nav itemscope="" itemtype="https://schema.org/SiteNavigationElement">
                 <ul class="flex flex-col md:gap-3">
@@ -28,7 +28,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="flex flex-col gap-4 md:hidden">
+        <div class="flex flex-col gap-4 mt-3 md:hidden">
             <p class="font-roboto font-semibold text-dark-700 text-size_18 whitespace-nowrap">{{ footer_menu_2.name }}</p>
             <nav itemscope="" itemtype="https://schema.org/SiteNavigationElement">
                 <ul class="flex flex-col  md:gap-3">
@@ -40,7 +40,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="flex flex-col gap-4 sm:hidden">
+        <div class="flex flex-col gap-4 mt-3 sm:hidden">
             <p class="font-roboto font-semibold text-dark-700 text-size_18">{{ footer_menu_3.name }}</p>
             <nav itemscope="" itemtype="https://schema.org/SiteNavigationElement">
                 <ul class="flex flex-col md:gap-3">
@@ -52,7 +52,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col mt-3 gap-4">
             <p class="font-roboto font-semibold text-dark-700 text-size_18 ">{{ footer_menu_4.name }}</p>
             <nav itemscope="" itemtype="https://schema.org/SiteNavigationElement">
                 <ul class="flex flex-col md:gap-3">
