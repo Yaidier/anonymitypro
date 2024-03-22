@@ -1,0 +1,37 @@
+{# WN Ready #}
+
+<!doctype html>
+<html {{site.language_attributes|raw}}>
+    <head>
+        <meta charset="{{site.charset}}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        {# Favicon #}
+        <link rel="apple-touch-icon" sizes="180x180" href="/app/themes/savvy-child/assets/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/app/themes/savvy-child/assets/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/app/themes/savvy-child/assets/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/app/themes/savvy-child/assets/favicons/site.webmanifest">
+
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="msapplication-config" content="/app/themes/savvy-child/assets/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#333333">
+
+        {{function('wp_head')|raw}}
+    </head>
+	<body class="{{body_class}} overflow-x-hidden">
+        {{function('wp_body_open')|raw}}
+
+        {# Calls the Block Content #}
+        <div class="relative h-screen px-4 z-0 flex flex-col align-middle justify-between py-10 bg-[#0B1F39]">
+            <img class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-contain max-w-[1600px] -z-10" src="/app/themes/savvy-child/assets/svg/ap-bg-map.svg" alt="World Map" loading="lazy" decoding="async">
+            <img class="block mx-auto w-[267px] object-contain text-align center" src="/app/themes/savvy-child/assets/svg/ap-logo-light.svg" alt="Anonymity Pro" loading="lazy" decoding="async">
+            <h1 class="text-[96px] leading-[1.1em] text-center mb-0 text-white font-bold  md:text-[60px]">Coming Soon</h1>
+            <p class="text-white  font-light text-center mb-0 text-[24px] md:text-[18px]">Something awesome is getting build here, check again in a few days.</p>
+        </div>
+        
+        {# Fire the wp_footer action. #}
+        {{function('wp_footer')|raw}}
+    </body>
+</html>
